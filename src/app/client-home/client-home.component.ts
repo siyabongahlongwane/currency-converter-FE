@@ -80,7 +80,6 @@ export class ClientHomeComponent implements OnInit {
             this.showConversion = true;
             this.skeleton = false;
           }
-          console.log(this.conversion);
         },
         (err) => {
           console.log(err);
@@ -98,7 +97,7 @@ export class ClientHomeComponent implements OnInit {
         }
       },
       (err) => {
-        console.log(err);
+          this.common.openSnackbar('Error fetching countries from server!');
       }
     );
   }
@@ -185,45 +184,6 @@ export class ClientHomeComponent implements OnInit {
     });
   }
 
-  // openDialog(dialogName: any): any {
-  //   let component =
-  //     dialogName === 'cookies'
-  //       ? CookiesDialogComponent
-  //       : dialogName === 'privacy'
-  //       ? GenericDialogComponent
-  //       : dialogName === 'contact'
-  //       ? ContactComponent
-  //       : TermsComponent;
-  //   let width = dialogName === 'cookies' ? '40%' : '75%';
-  //   let disableClose =
-  //     dialogName === 'cookies' || dialogName === 'contact' ? true : false;
-  //   this.dialog
-  //     .open(component, {
-  //       disableClose,
-  //       width,
-  //       panelClass: ['dialog'],
-  //       maxHeight: '90vh',
-  //     })
-  //     .afterClosed()
-  //     .subscribe((res) => {
-  //       console.log(res);
-  //       if (dialogName === 'cookies' && (res === true || res === false)) {
-  //         this.common.storeCookie(res);
-  //         this.common.openSnackbar('Cookie preference saved!');
-  //       } else if (dialogName === 'contact' && res) {
-  //         console.log(res);
-  //         this.api.sendContactEmail('sendEmail', res).subscribe(
-  //           (res) => {
-  //             this.common.openSnackbar(res.msg);
-  //           },
-  //           (err) => {
-  //             this.common.openSnackbar(res.err);
-  //           }
-  //         );
-  //       }
-  //     });
-  // }
-
   openCookiesDialog() {
     this.dialog
       .open(CookiesDialogComponent, {
@@ -271,7 +231,7 @@ export class ClientHomeComponent implements OnInit {
               this.common.openSnackbar(res.msg);
             },
             (err) => {
-              this.common.openSnackbar(err.err);
+              this.common.openSnackbar('Error connecting to server!');
             }
           );
         }
