@@ -1,0 +1,287 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*
+  Global Colors
+*/
+
+$primaryColor: #6abf58;
+$red: red;
+$white: #fff;
+$transparentBlack: #000000f0;
+
+.remove-default-margin {
+  margin: 0 !important;
+}
+
+.home-background {
+  height: 100vh;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(./assets/img/home-bg.jfif);
+  background-size: cover;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, .5);
+}
+
+.currency-card {
+  border-radius: 1.8rem !important;
+  padding: 2rem !important;
+
+  label {
+    font-size: 1rem;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.swap {
+  color: $primaryColor;
+  background: transparent !important;
+  font-size: 35px !important;
+  margin-left: -0.9rem;
+}
+
+.swap-xs{
+  transform: rotate(90deg) !important;
+}
+.primary-button {
+  background: $primaryColor;
+  color: $white;
+}
+
+.all-buttons {
+  padding: .1rem 1.6rem !important;
+}
+
+.white-text {
+  color: $white  !important;
+}
+
+.contact-form {
+
+  .mat-form-field-empty.mat-form-field-label,
+  .mat-form-field-appearance-outline .mat-form-field-outline,
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    color: $white  !important;
+  }
+
+  .mat-form-field-underline {
+    background-color: $white  !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: $white  !important;
+    ;
+  }
+}
+
+.spinner {
+
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $primaryColor;
+  }
+
+  top: -10%;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.close-icon {
+  right: 0rem;
+  top: -1.5rem;
+
+  mat-icon {
+    font-size: 2rem !important;
+  }
+}
+
+
+.error {
+  color: $red;
+}
+
+.margin-top-1-rem {
+  margin-top: 1rem !important;
+}
+
+.primary-text {
+  color: $primaryColor !important;
+}
+
+.big-header {
+  font-size: 2.2rem !important;
+  font-weight: 900 !important;
+}
+
+.big-header-xs {
+  font-size: 1.9rem !important;
+  margin-top: 4rem !important;
+}
+
+.medium-header {
+  font-size: 1.8rem !important;
+  font-weight: 900 !important;
+}
+
+.dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+    border-radius: 10px;
+  }
+}
+
+.padding-half-rem {
+  padding: .5rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.footer-links:hover {
+  color: $transparentBlack  !important;
+}
+
+.mat-button-disabled.mat-button-disabled {
+  background-color: grey !important;
+  color: #d5d5d5d4 !important;
+}
+
+.logo-padding{
+  padding: 30px !important;
+}
+
+.cookies-dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+    border-radius: 10px;
+  }
+}
+
+.terms-dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+    border-radius: 10px;
+  }
+}
+
+.privacy-dialog {
+    mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+    width: fit-content !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+    border-radius: 10px;
+  }
+}
+.contact-dialog {
+    mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+    width: 325px !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+    border-radius: 10px;
+  }
+}
+
+.footer{
+  background: $primaryColor;
+}
+
+.margin-bottom-1-rem{
+  margin-bottom: 2rem !important;
+}
+
+.unset-height{
+  height: unset !important;
+}

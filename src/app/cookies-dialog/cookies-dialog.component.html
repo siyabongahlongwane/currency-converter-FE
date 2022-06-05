@@ -1,0 +1,23 @@
+  <div fxLayout="column" fxFlex="100" fxLayoutAlign="center stretch">
+    <div fxLayout="row"  fxLayoutAlign="center center">
+      <div fxLayout="column" fxFlex="20" fxLayoutAlign="center start">
+        <img class="full-width" src="../../assets/img/cookie.png" alt="" />
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxLayout="column" fxFlex="90" fxLayoutAlign="center center">
+        <h1 class="white-text">We use cookies :)</h1>
+        <p class="white-text" [ngStyle.xs]="'text-align: center'">
+          Like any other website, Currency rate hub uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.
+        </p>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="end center" fxLayoutAlign.xs="center center">
+      <div fxLayout="column" fxLayoutAlign="start stretch">
+        <button class="primary-button full-width all-buttons" mat-raised-button [mat-dialog-close]="true">Accept</button>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="start stretch">
+        <button class="all-buttons" color="warn" mat-raised-button [mat-dialog-close]="false">Decline</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,71 @@
+<div fxLayout="column" fxFlex="100" fxLayoutAlign="center stretch">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column" fxFlex="100" fxLayoutAlign="center center">
+      <h1 class="primary-text medium-header">Contact Form</h1>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column" fxFlex="90" fxLayoutAlign="center center">
+      <!-- <h1 class="white-text">We use cookies :)</h1> -->
+      <form class="full-width contact-form" fxLayout="row" fxLayoutAlign="center center" #contactForm="ngForm">
+        <div class="full-width" fxLayout="column" fxFlex="100">
+          <div
+            fxFlex="100"
+            fxLayoutGap="1rem"
+            fxLayout="column"
+            fxLayoutAlign="center start"
+            *ngFor="let input of inputs"
+            class="full-width"
+          >
+            <label class="bold-text white-text"> {{ input.label }} </label>
+            <mat-form-field class="full-width" appearance="outline">
+              <input
+                *ngIf="input.type !== 'textarea'"
+                [required]="input.required"
+                [(ngModel)]="input.binding"
+                [type]="input.type"
+                [name]="input.name"
+                matInput
+                [placeholder]="input.label"
+              />
+              <textarea
+                [required]="input.required"
+                [(ngModel)]="input.binding"
+                [type]="input.type"
+                [name]="input.name"
+                matInput
+                [placeholder]="input.label"
+                matInput
+                *ngIf="input.type === 'textarea'"
+              ></textarea>
+              <mat-error *ngIf="!input.binding?.valid && (input.binding?.dirty || input.binding?.touched)">{{input.label + ' is required!'}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutGap="1rem" fxLayoutAlign="end center">
+            <div fxLayout="column" fxLayoutAlign="start stretch">
+              <button
+                [disabled]="contactForm.invalid"
+                class="primary-button full-width all-buttons"
+                mat-raised-button
+                [mat-dialog-close]="contactForm.value"
+              >
+                Submit
+              </button>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start stretch">
+              <button
+                class="all-buttons"
+                color="warn"
+                mat-raised-button
+                [mat-dialog-close]="false"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+          <!-- <p *ngIf="submitted && contactForm.invalid" class="error">Please fill in all fields</p> -->
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
