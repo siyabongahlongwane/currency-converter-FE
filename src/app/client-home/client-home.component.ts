@@ -25,7 +25,7 @@ export class ClientHomeComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
   conversion: any = {
-    date: new Date().toDateString().slice(0, 11),
+    date: new Date().toDateString().slice(0, 10),
     amount: null,
     conversionRate: 0,
     convertedAmount: 0,
@@ -51,14 +51,15 @@ export class ClientHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCountries();
-    console.log(this.common.checkCookie());
     if (this.common.checkCookie() === null) {
       this.openCookiesDialog();
     }
   }
 
   getConversionRate(): any {
+    this.skeleton = false;
     this.submitted = true;
+    this.showConversion = false;
     if (!this.conversion.amount || !this.currOneValid || !this.currTwoValid) {
       this.showError = true;
       return false;
@@ -66,25 +67,29 @@ export class ClientHomeComponent implements OnInit {
     this.skeleton = true;
     this.getFirstCurrencyCode(this.conversionForm?.value.firstCurrencyName);
     this.getSecondCurrencyCode(this.conversionForm?.value.secondCurrencyName);
+    this.conversion.source = 'app';
     this.conversion = Object.assign(
       this.conversion,
       this.conversionForm?.value
     );
-
-    this.api
-      .getCurrencies(`convertCurrency?q=${JSON.stringify(this.conversion)}`)
-      .subscribe(
-        (res: any) => {
-          if (res) {
-            this.conversion = res;
-            this.showConversion = true;
-            this.skeleton = false;
-          }
-        },
-        (err) => {
-          console.log(err);
+    let queryString = Object.keys(this.conversion)
+      .map((key) => key + '=' + this.conversion[key])
+      .join('&');
+    this.api.getCurrencies(`convertCurrency?${queryString}`).subscribe(
+      (res: any) => {
+        if (res) {
+          this.conversion = res;
+          this.showConversion = true;
+          this.skeleton = false;
         }
-      );
+      },
+      (msg) => {
+        console.log(msg);
+        this.showConversion;
+        this.common.openSnackbar(msg.error || 'Error converting currencies!');
+        this.skeleton = false;
+      }
+    );
   }
 
   getCountries() {
@@ -97,7 +102,7 @@ export class ClientHomeComponent implements OnInit {
         }
       },
       (err) => {
-          this.common.openSnackbar('Error fetching countries from server!');
+        this.common.openSnackbar('Error fetching countries from server!');
       }
     );
   }
@@ -161,24 +166,22 @@ export class ClientHomeComponent implements OnInit {
   }
 
   checkIfCurrencyOneIsValid(x: any): any {
-    console.log(x.target.value);
+    this.currOneValid = true;
     this.countries.forEach((country: any) => {
       if (x.target.value === country.currencyName) {
         this.conversion.secondSymbol = country.currencySymbol || '';
         this.currOneValid = true;
-        console.log(this.currOneValid);
         return;
       }
     });
   }
 
   checkIfCurrencyTwoIsValid(y: any): any {
-    console.log(y.target.value);
+    this.currTwoValid = true;
     this.countries.forEach((country: any) => {
       if (y.target.value === country.currencyName) {
         this.conversion.secondSymbol = country.currencySymbol || '';
         this.currTwoValid = true;
-        console.log(this.currTwoValid);
         return;
       }
     });
@@ -193,7 +196,6 @@ export class ClientHomeComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((res) => {
-        console.log(res);
         this.common.storeCookie(res);
         this.common.openSnackbar('Cookie preference saved!');
       });
@@ -225,16 +227,24 @@ export class ClientHomeComponent implements OnInit {
       .afterClosed()
       .subscribe((res) => {
         if (res) {
-          console.log(res);
           this.api.sendContactEmail('sendEmail', res).subscribe(
             (res) => {
               this.common.openSnackbar(res.msg);
             },
-            (err) => {
-              this.common.openSnackbar('Error connecting to server!');
+            (msg) => {
+              this.common.openSnackbar(msg.error || 'Error connecting to server!');
             }
           );
         }
       });
+  }
+
+  roundDownToFiveDecimals(num: any) {
+    num = num.toString();
+    if (num.includes('.')) {
+      num = num.split('.');
+      num = num[0] + '.' + num[1].slice(0, 5);
+    }
+    return num;
   }
 }

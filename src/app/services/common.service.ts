@@ -17,6 +17,6 @@ export class CommonService {
   }
 
   openSnackbar(msg: string){
-    this.snackbar.open(msg, 'Close', {duration: 3000});
+    this.snackbar.open(msg, 'Close', {duration: 4000});
   }
 }

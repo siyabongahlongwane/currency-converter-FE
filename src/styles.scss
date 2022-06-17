@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap');
 
 html,
 body {
@@ -15,10 +16,11 @@ body {
   Global Colors
 */
 
-$primaryColor: #6abf58;
+$primaryGreen: #6abf58;
+$primaryBlue: #2476bb;
 $red: red;
 $white: #fff;
-$transparentBlack: #000000f0;
+$transparentBlack: rgba(0, 0, 0, 0.941);
 
 .remove-default-margin {
   margin: 0 !important;
@@ -26,7 +28,7 @@ $transparentBlack: #000000f0;
 
 .home-background {
   height: 100vh;
-  background: linear-gradient(270deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(./assets/img/home-bg.jfif);
+  background: linear-gradient(170deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1.8)), url('./assets/img/home-bg-min.jpg');
   background-size: cover;
 }
 
@@ -37,12 +39,33 @@ $transparentBlack: #000000f0;
 .currency-card {
   border-radius: 1.8rem !important;
   padding: 2rem !important;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid $primaryBlue;
 
   label {
     font-size: 1rem;
   }
+
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    color: $white  !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: $primaryBlue  !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+    border-width: 2px !important;
 }
 
+.mat-form-field-empty.mat-form-field-label,
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  color: $white  !important;
+}
+
+}
 .full-width {
   width: 100%;
 }
@@ -51,18 +74,23 @@ $transparentBlack: #000000f0;
   font-weight: bold;
 }
 
+.bold-text-600 {
+  font-weight: 600 !important;
+}
+
 .swap {
-  color: $primaryColor;
+  color: $primaryGreen;
   background: transparent !important;
   font-size: 35px !important;
   margin-left: -0.9rem;
 }
 
-.swap-xs{
+.swap-xs {
   transform: rotate(90deg) !important;
 }
+
 .primary-button {
-  background: $primaryColor;
+  background: $primaryGreen;
   color: $white;
 }
 
@@ -96,7 +124,7 @@ $transparentBlack: #000000f0;
 
   .mat-progress-spinner circle,
   .mat-spinner circle {
-    stroke: $primaryColor;
+    stroke: $primaryGreen;
   }
 
   top: -10%;
@@ -129,7 +157,7 @@ $transparentBlack: #000000f0;
 }
 
 .primary-text {
-  color: $primaryColor !important;
+  color: $primaryGreen  !important;
 }
 
 .big-header {
@@ -140,6 +168,7 @@ $transparentBlack: #000000f0;
 .big-header-xs {
   font-size: 1.9rem !important;
   margin-top: 4rem !important;
+  text-align: center !important;
 }
 
 .medium-header {
@@ -163,7 +192,7 @@ $transparentBlack: #000000f0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: $primaryColor;
+    background: $primaryGreen;
     border-radius: 10px;
   }
 }
@@ -185,7 +214,7 @@ $transparentBlack: #000000f0;
   color: #d5d5d5d4 !important;
 }
 
-.logo-padding{
+.logo-padding {
   padding: 30px !important;
 }
 
@@ -205,7 +234,7 @@ $transparentBlack: #000000f0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: $primaryColor;
+    background: $primaryGreen;
     border-radius: 10px;
   }
 }
@@ -226,13 +255,13 @@ $transparentBlack: #000000f0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: $primaryColor;
+    background: $primaryGreen;
     border-radius: 10px;
   }
 }
 
 .privacy-dialog {
-    mat-dialog-container {
+  mat-dialog-container {
     border-radius: 1rem !important;
     background: $transparentBlack  !important;
     width: fit-content !important;
@@ -248,12 +277,13 @@ $transparentBlack: #000000f0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: $primaryColor;
+    background: $primaryGreen;
     border-radius: 10px;
   }
 }
+
 .contact-dialog {
-    mat-dialog-container {
+  mat-dialog-container {
     border-radius: 1rem !important;
     background: $transparentBlack  !important;
     width: 325px !important;
@@ -269,19 +299,19 @@ $transparentBlack: #000000f0;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: $primaryColor;
+    background: $primaryGreen;
     border-radius: 10px;
   }
 }
 
-.footer{
-  background: $primaryColor;
+.footer {
+  background: $primaryGreen;
 }
 
-.margin-bottom-1-rem{
+.margin-bottom-1-rem {
   margin-bottom: 2rem !important;
 }
 
-.unset-height{
+.unset-height {
   height: unset !important;
 }

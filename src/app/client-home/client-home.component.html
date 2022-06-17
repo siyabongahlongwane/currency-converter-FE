@@ -5,7 +5,7 @@
   fxLayoutAlign="center center"
   fxFill
 >
-  <mat-progress-spinner [mode]="mode"> </mat-progress-spinner>
+  <mat-progress-spinner style="z-index: 99999 !important;" [mode]="mode"> </mat-progress-spinner>
 </div>
 <div fxFill fxLayout="row" fxLayoutAlign="start stretch">
   <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch">
@@ -53,11 +53,11 @@
           >
             <h1
               [ngClass.xs]="['big-header-xs']"
-              class="white-text bold primary-text big-header"
+              class="white-text primary-text big-header"
             >
               Conversion, just made easier!
             </h1>
-            <h1 class="white-text" [ngStyle.xs]="'text-align: center'">
+            <h1 class="white-text  bold-text" [ngStyle.xs]="'text-align: center'">
               Check live foreign currency exchange rates with our lightning fast
               currency API.
             </h1>
@@ -94,7 +94,7 @@
                   *ngIf="!skeleton"
                   #conversionForm="ngForm"
                 >
-                  <h1 align="center" class="primary-text bold-text">
+                  <h1 align="center" class="primary-text bold-text-600">
                     Start converting!
                   </h1>
                   <div
@@ -117,7 +117,7 @@
                         fxLayout.xs="row"
                         fxLayoutAlign="center start"
                       >
-                        <label fxHide.xs="true" class="bold-text"
+                        <label fxHide.xs="true" class="bold-text white-text"
                           >Amount To Convert</label
                         >
                       </div>
@@ -159,7 +159,7 @@
                         fxLayoutAlign="center start"
                         class="full-width"
                       >
-                        <label fxHide.xs="true" class="bold-text"
+                        <label fxHide.xs="true" class="bold-text white-text"
                           >Convert From</label
                         >
                       </div>
@@ -235,7 +235,7 @@
                         fxLayoutAlign="center start"
                         class="full-width"
                       >
-                        <label fxHide.xs="true" class="bold-text"
+                        <label fxHide.xs="true" class="bold-text white-text"
                           >Convert To</label
                         >
                       </div>
@@ -304,11 +304,11 @@
                   fxLayout="column"
                   fxLayoutAlign="center start"
                 >
-                  <div fxLayout="column" fxLayoutAlign="center start">
+                  <div class="primary-text" fxLayout="column" fxLayoutAlign="center start">
                     <p>
                       {{ conversion.amount }}
                       <b>{{ conversion.firstCurrency }}</b> =
-                      {{ conversion.convertedAmount }}
+                      {{ roundDownToFiveDecimals(conversion.convertedAmount) }}
                       <b>{{ conversion.secondCurrency }}</b>
                     </p>
                     <!-- <h2>
@@ -316,15 +316,15 @@
                       {{ conversion.secondCurrency }}
                     </h2> -->
                   </div>
-                  <div fxLayout="column" fxLayoutAlign="center start">
+                  <div class="primary-text" fxLayout="column" fxLayoutAlign="center start">
                     <p>
                       1 <b>{{ conversion.firstCurrency }}</b> =
-                      {{ conversion.convertC1ToC2 }}
-                      <b>{{ conversion.secondCurrency }}</b>
+                      {{ roundDownToFiveDecimals(conversion.convertC1ToC2) }}
+                      <b>{{ roundDownToFiveDecimals(conversion.secondCurrency) }}</b>
                     </p>
                     <p>
                       1 <b>{{ conversion.secondCurrency }}</b> =
-                      {{ conversion.convertC2ToC1 }}
+                      {{ roundDownToFiveDecimals(conversion.convertC2ToC1) }}
                       <b>{{ conversion.firstCurrency }}</b>
                     </p>
                   </div>
