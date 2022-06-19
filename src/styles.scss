@@ -1,1 +1,323 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700;1,900&display=swap');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*
+  Global Colors
+*/
+
+$primaryGreen: #6abf58;
+$primaryBlue: #2476bb;
+$red: red;
+$white: #fff;
+$transparentBlack: rgba(0, 0, 0, 0.941);
+
+.remove-default-margin {
+  margin: 0 !important;
+}
+
+.home-background {
+  height: 100vh;
+  background: linear-gradient(170deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1.8)), url('./assets/img/home-bg-min.jpg');
+  background-size: cover;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, .5);
+}
+
+.currency-card {
+  border-radius: 1.8rem !important;
+  padding: 2rem !important;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid $primaryBlue;
+
+  label {
+    font-size: 1rem;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    color: $white  !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: $primaryBlue  !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
+.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+    border-width: 2px !important;
+}
+
+.mat-form-field-empty.mat-form-field-label,
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  color: $white  !important;
+}
+
+}
+.full-width {
+  width: 100%;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.bold-text-600 {
+  font-weight: 600 !important;
+}
+
+.swap {
+  color: $primaryGreen;
+  background: transparent !important;
+  font-size: 35px !important;
+  margin-left: -0.9rem;
+  height: 33px !important;
+  width: 33px !important;
+}
+
+.swap-xs {
+  transform: rotate(90deg) !important;
+}
+
+.primary-button {
+  background: $primaryGreen;
+  color: $white;
+}
+
+.all-buttons {
+  padding: .1rem 1.6rem !important;
+}
+
+.white-text {
+  color: $white  !important;
+}
+
+.contact-form {
+
+  .mat-form-field-empty.mat-form-field-label,
+  .mat-form-field-appearance-outline .mat-form-field-outline,
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    color: $white  !important;
+  }
+
+  .mat-form-field-underline {
+    background-color: $white  !important;
+  }
+
+  .mat-form-field-ripple {
+    background-color: $white  !important;
+    ;
+  }
+}
+
+.spinner {
+
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $primaryGreen;
+  }
+
+  top: -10%;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.close-icon {
+  right: 0rem;
+  top: -1.5rem;
+
+  mat-icon {
+    font-size: 2rem !important;
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+
+.error, .red-text {
+  color: $red;
+}
+
+.margin-top-1-rem {
+  margin-top: 1rem !important;
+}
+
+.primary-text {
+  color: $primaryGreen  !important;
+}
+
+.big-header {
+  font-size: 2.2rem !important;
+  font-weight: 900 !important;
+}
+
+.big-header-xs {
+  font-size: 1.9rem !important;
+  margin-top: 4rem !important;
+  text-align: center !important;
+}
+
+.medium-header {
+  font-size: 1.8rem !important;
+  font-weight: 900 !important;
+}
+
+.dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryGreen;
+    border-radius: 10px;
+  }
+}
+
+.padding-half-rem {
+  padding: .5rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.footer-links:hover {
+  color: $transparentBlack  !important;
+}
+
+.mat-button-disabled.mat-button-disabled {
+  background-color: grey !important;
+  color: #d5d5d5d4 !important;
+}
+
+.logo-padding {
+  padding: 30px !important;
+}
+
+.cookies-dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryGreen;
+    border-radius: 10px;
+  }
+}
+
+.terms-dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryGreen;
+    border-radius: 10px;
+  }
+}
+
+.privacy-dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+    width: fit-content !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryGreen;
+    border-radius: 10px;
+  }
+}
+
+.contact-dialog {
+  mat-dialog-container {
+    border-radius: 1rem !important;
+    background: $transparentBlack  !important;
+    width: 325px !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey !important;
+    border-radius: 10px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryGreen;
+    border-radius: 10px;
+  }
+}
+
+.footer {
+  background: $primaryGreen;
+}
+
+.margin-bottom-1-rem {
+  margin-bottom: 2rem !important;
+}
+
+.unset-height {
+  height: unset !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
