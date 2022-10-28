@@ -10,10 +10,14 @@ import { TermsDialogComponent } from './terms-dialog/terms-dialog.component';
 import { PrivacyDialogComponent } from './privacy-dialog/privacy-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContactComponent,
     CookiesDialogComponent,
     TermsDialogComponent,
-    PrivacyDialogComponent
+    PrivacyDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     FlexLayoutModule,
     NgxSkeletonLoaderModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
