@@ -20,7 +20,14 @@ $primaryBlue: #2476bb;
 $red: red;
 $white: #fff;
 $transparentBlack: rgba(0, 0, 0, 0.941);
-
+$primaryBlue: #03245c;
+$primaryWhite: #fff;
+$primaryBlack: #000;
+$primaryGrey: rgb(80, 79, 79);
+$darkGrey: #222222;
+$green: rgb(116, 223, 116);
+$orange: rgb(230, 176, 76);
+$red: rgb(236, 86, 86);
 .remove-default-margin {
   margin: 0 !important;
 }
@@ -46,27 +53,30 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
   }
 
   .mat-form-field-appearance-outline .mat-form-field-label {
-    color: $white  !important;
+    color: $white !important;
   }
 
   .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: $primaryBlue  !important;
+    color: $primaryBlue !important;
   }
 
   .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-start,
-.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
-.mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap {
     border-width: 2px !important;
+  }
+
+  .mat-form-field-empty.mat-form-field-label,
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    color: $white !important;
+  }
+
 }
 
-.mat-form-field-empty.mat-form-field-label,
-.mat-form-field-appearance-outline .mat-form-field-infix {
-  color: $white  !important;
-}
-
-}
-.full-width {
-  width: 100%;
+.full-width,
+.blueBtn,
+app-toolbar {
+  width: 100% !important;
 }
 
 .bold-text {
@@ -100,7 +110,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 }
 
 .white-text {
-  color: $white  !important;
+  color: $white !important;
 }
 
 .contact-form {
@@ -108,15 +118,15 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
   .mat-form-field-empty.mat-form-field-label,
   .mat-form-field-appearance-outline .mat-form-field-outline,
   .mat-form-field-appearance-outline .mat-form-field-infix {
-    color: $white  !important;
+    color: $white !important;
   }
 
   .mat-form-field-underline {
-    background-color: $white  !important;
+    background-color: $white !important;
   }
 
   .mat-form-field-ripple {
-    background-color: $white  !important;
+    background-color: $white !important;
     ;
   }
 }
@@ -151,7 +161,8 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 }
 
 
-.error, .red-text {
+.error,
+.red-text {
   color: $red;
 }
 
@@ -160,7 +171,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 }
 
 .primary-text {
-  color: $primaryGreen  !important;
+  color: $primaryGreen !important;
 }
 
 .big-header {
@@ -182,7 +193,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 .dialog {
   mat-dialog-container {
     border-radius: 1rem !important;
-    background: $transparentBlack  !important;
+    background: $transparentBlack !important;
   }
 
   ::-webkit-scrollbar {
@@ -209,7 +220,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 }
 
 .footer-links:hover {
-  color: $transparentBlack  !important;
+  color: $transparentBlack !important;
 }
 
 .mat-button-disabled.mat-button-disabled {
@@ -224,7 +235,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 .cookies-dialog {
   mat-dialog-container {
     border-radius: 1rem !important;
-    background: $transparentBlack  !important;
+    background: $transparentBlack !important;
   }
 
   ::-webkit-scrollbar {
@@ -245,7 +256,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 .terms-dialog {
   mat-dialog-container {
     border-radius: 1rem !important;
-    background: $transparentBlack  !important;
+    background: $transparentBlack !important;
   }
 
   ::-webkit-scrollbar {
@@ -266,7 +277,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 .privacy-dialog {
   mat-dialog-container {
     border-radius: 1rem !important;
-    background: $transparentBlack  !important;
+    background: $transparentBlack !important;
     width: fit-content !important;
   }
 
@@ -288,7 +299,7 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
 .contact-dialog {
   mat-dialog-container {
     border-radius: 1rem !important;
-    background: $transparentBlack  !important;
+    background: $transparentBlack !important;
     width: 325px !important;
   }
 
@@ -319,5 +330,157 @@ $transparentBlack: rgba(0, 0, 0, 0.941);
   height: unset !important;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.sidenavContainer {
+  height: calc(100vh - 65px) !important;
+
+  .sidenav {
+    width: 250px;
+  }
+}
+
+.sidenavItem {
+  padding: 0.1em 0.5em 0.1em 1em;
+  border-top: 0.1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.2);
+
+  span {
+    font-size: 13px;
+  }
+
+  .mat-icon {
+    font-size: 1em !important;
+    width: 1em !important;
+    height: 1em !important;
+  }
+}
+
+
+.avatar {
+  height: 150px;
+  width: 150px;
+  background: $primaryGreen;
+  border-radius: 50%;
+  margin-top: 1em;
+
+  span {
+    font-size: 3em;
+    color: $white
+  }
+}
+
+small .username {
+  color: $primaryBlue,
+}
+
+.padding-20px {
+  padding: 4px;
+}
+
+.router-height {
+  height: calc(100% - 40px);
+}
+
+.blue-text {
+  color: $primaryBlue !important;
+}
+
+.height-100px {
+  height: 60px;
+}
+
+.blueBackground,
+.primaryBlueBtn,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent
+  .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background: $primaryBlue !important;
+}
+
+.greenBackground {
+  background: $green;
+}
+
+.orangeBackground {
+  background: $orange;
+}
+
+.redBackground {
+  background: $red !important;
+}
+
+.whiteBackground {
+  background: $primaryWhite !important;
+}
+
+app-dashboard .mat-card {
+  padding: 0 !important;
+}
+
+.table-style {
+  overflow: auto;
+  width: 100%;
+  min-width: 100%;
+  margin-bottom: 1em;
+  max-height: 220px !important;
+  overflow-y: auto;
+  .all-tables {
+    height: 100%;
+    tr.mat-header-row {
+      height: 45px;
+      background-color: $green;
+      color: $white !important;
+    }
+    tr.mat-row {
+      height: 45px;
+    }
+    th.mat-header-cell:last-of-type,
+    td.mat-cell:last-of-type,
+    td.mat-footer-cell:last-of-type {
+      text-align: left;
+    }
+    th.mat-header-cell,
+    td.mat-cell,
+    td.mat-footer-cell {
+      font-size: 12px;
+      text-align: left;
+      padding-left: 24px;
+      max-width: 350px;
+      white-space: break-spaces;
+    }
+  }
+}
+
+.photo img {
+  width: 40px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.tox{
+  height: 300px !important;
+  // display: none;
+}
+
+.tox .tox-statusbar__branding svg{
+  display: none;
+}
+
+

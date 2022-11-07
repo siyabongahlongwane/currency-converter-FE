@@ -1,68 +1,127 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" class="baseColor">
-  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="login-background">
-    <div class="LoginpositioningText" fxFlex="35" fxFlex.xs="90" fxLayout="column" fxLayoutAlign="center start" fxLayoutAlign.xs="center center">
-      <h1 [ngClass.xs]="['big-header-xs']" class="white-text primary-text big-header conversionHeader"> Conversion, just made easier! </h1>
-      <h1 class="white-text bold-text conversionSubHeader" [ngStyle.xs]="'text-align: center'">
+  <div
+    fxLayout="column"
+    fxLayoutAlign="start stretch"
+    fxFlex="49"
+    class="login-background"
+  >
+    <div
+      class="LoginpositioningText"
+      fxFlex="35"
+      fxFlex.xs="90"
+      fxLayout="column"
+      fxLayoutAlign="center start"
+      fxLayoutAlign.xs="center center"
+    >
+      <h1
+        [ngClass.xs]="['big-header-xs']"
+        class="white-text primary-text big-header conversionHeader"
+      >
+        Conversion, just made easier!
+      </h1>
+      <h1
+        class="white-text bold-text conversionSubHeader"
+        [ngStyle.xs]="'text-align: center'"
+      >
         Check live foreign currency exchange rates with our lightning fast
         currency API.
       </h1>
     </div>
   </div>
   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49">
-    <!-- <p>login works!</p> -->
-    <div class="maincontainer baseColor" fxLayout="column" fxLayoutAlign="center center" fxFill>
-      <h1>Foreign currency exchange</h1>
+    <div
+      class="maincontainer baseColor"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxFill
+    >
       <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
-          <div fxLayout="column" fxLayoutAlign="space-evenly center">
-              <img src="assets/images/login.png" alt="" class="height400px" />
-          </div>
-          <div fxLayout="column" fxLayoutAlign="center center" fxFlex="50" class="bg-white width30em height400px">
-              <h1 class="bold">LOGIN</h1>
-              <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
-                  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="80">
-                      <form [formGroup]="login" class="fullwidth">
-                          <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
-                              <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
-                                  <mat-form-field appearance="outline">
-                                      <mat-label>Username</mat-label>
-                                      <input matInput placeholder="Username" type="email" formControlName="username" />
-                                      <mat-error
-                                          *ngIf="(login.controls ['username'].errors?.['required']) && (login.controls ['username'].touched)">
-                                          Username is required</mat-error>
-                                      <mat-error
-                                          *ngIf="(login.controls ['username'].errors?.['email']) && (login.controls ['username'].touched)">
-                                          Invalid Username</mat-error>
-                                  </mat-form-field>
-
-                              </div>
-                          </div>
-                          <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
-                              <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
-                                  <mat-form-field appearance="outline">
-                                      <mat-label>Passowrd</mat-label>
-                                      <input matInput placeholder="Passowrd" type="password" formControlName="password" />
-                                      <mat-error
-                                          *ngIf="(login.controls['password'].errors?.['required']) && (login.controls['password'].touched)">
-                                          Password is required</mat-error>
-                                      <mat-error
-                                          *ngIf="(login.controls['password'].errors?.['minlength']) && (login.controls['password'].touched)">
-                                          Mininmum Length is 3 </mat-error>
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                      </form>
+        <div
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxFlex="50"
+          class="bg-white width30em height400px"
+        >
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start stretch"
+            class="fullwidth"
+          ><h1>Login</h1></div>
+          <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+              <form [formGroup]="login" class="fullwidth">
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start stretch"
+                  class="marginBottom1em"
+                >
+                  <div
+                    fxLayout="column"
+                    fxLayoutAlign="start stretch"
+                    fxFlex="100"
+                  >
+                    <mat-form-field appearance="outline">
+                      <mat-label>Username</mat-label>
+                      <input
+                        matInput
+                        placeholder="Username"
+                        type="email"
+                        formControlName="username"
+                      />
+                      <mat-error
+                        *ngIf="(login.controls['username']?.touched && login.controls['username']?.errors?.['required'])"
+                      >
+                        Username is required</mat-error
+                      >
+                    </mat-form-field>
                   </div>
-              </div>
-              <div fxLayout="row" fxLayoutAlign="start center" class="submitBtnWidth" fxLayoutGap="12px">
-                  <!-- <div class="signInRe">Not a User .? <span class="pointer logRegTextColor"
-                          (click)="showLogReg = !showLogReg">Register</span></div> -->
-                  <button mat-raised-button class="blueBtn" (click)="onSubmit(login.value)" [disabled]="login.invalid">
-                      Login
-                  </button>
-              </div>
-
+                </div>
+                <div
+                  fxLayout="row"
+                  fxLayoutAlign="start stretch"
+                  class="marginBottom1em"
+                >
+                  <div
+                    fxLayout="column"
+                    fxLayoutAlign="start stretch"
+                    fxFlex="100"
+                  >
+                    <mat-form-field appearance="outline">
+                      <mat-label>Password</mat-label>
+                      <input
+                        matInput
+                        placeholder="Password"
+                        type="password"
+                        formControlName="password"
+                      />
+                      <mat-error
+                        *ngIf="(login.controls['password']?.touched && login.controls['password']?.errors?.['required'])"
+                      >
+                        Password is required</mat-error
+                      >
+                      <mat-error
+                        *ngIf="(login.controls['password']?.touched && login.controls['password']?.errors?.['minlength'])"
+                      >
+                        Mininmum length is 4 characters
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
+          <div fxLayout="row" fxLayoutAlign="start stretch" class="full-width">
+            <button
+              mat-raised-button
+              class="blueBtn"
+              (click)="onSubmit(login)"
+              [disabled]="login.invalid"
+            >
+              Login
+            </button>
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
   </div>
 </div>

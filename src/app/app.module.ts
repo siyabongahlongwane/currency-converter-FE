@@ -18,6 +18,13 @@ import { LoginComponent } from './login/login.component';
 
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ContainerComponent } from './admin/container/container.component';
+import { ToolbarComponent } from './admin/toolbar/toolbar.component';
+import { LatestPostsComponent } from './admin/latest-posts/latest-posts.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { NewPostComponent } from './admin/new-post/new-post.component';
+import { PostsComponent } from './admin/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CookiesDialogComponent,
     TermsDialogComponent,
     PrivacyDialogComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    ContainerComponent,
+    ToolbarComponent,
+    LatestPostsComponent,
+    NewPostComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +52,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NgxSkeletonLoaderModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

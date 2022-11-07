@@ -1,0 +1,102 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" fxFill>
+  <div
+    fxFlex="100"
+    fxLayout="column"
+    fxLayoutAlign="start stretch"
+    fxLayoutGap="0.5em"
+  >
+    <div fxLayout="column" fxLayoutAlign="start stretch">
+      <h1 class="bold-text-600 remove-default-margin">Create New Post</h1> {{ newPost.valid | json }}
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start stretch">
+      <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+        <form [formGroup]="newPost" class="fullwidth">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayoutGap="1em"
+          >
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="20">
+              <mat-form-field appearance="legacy">
+                <mat-label>Title</mat-label>
+                <input
+                  matInput
+                  placeholder="Title"
+                  type="email"
+                  formControlName="title"
+                />
+                <mat-error
+                  *ngIf="(newPost.controls['title']?.touched && newPost.controls['title']?.errors?.['required'])"
+                >
+                  Title is required</mat-error
+                >
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="20">
+              <mat-form-field appearance="legacy">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="(newPost.controls['title']?.touched && newPost.controls['title']?.errors?.['required'])"
+                >
+                Category is required</mat-error
+                >
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="20">
+              <mat-slide-toggle formControlName="published"
+                >Publish</mat-slide-toggle
+              >
+            </div>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start stretch"
+            class="marginBottom1em"
+          >
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+              <mat-label>Body</mat-label>
+              <editor
+                [apiKey]="apiKey"
+                [init]="{ plugins: 'link' }"
+                formControlName="content"
+              ></editor>
+
+              <span
+                class="error"
+                *ngIf="(newPost.controls['content']?.touched && newPost.controls['content']?.errors?.['required'])"
+              >
+                Content is required</span
+              >
+              <span
+                class="error"
+                *ngIf="(newPost.controls['content']?.touched && newPost.controls['content']?.errors?.['minlength'])"
+              >
+                Content length is 4 characters
+              </span>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start stretch" class="full-width">
+            <div
+              fxFlex="10"
+              fxLayout="column"
+              fxLayoutAlign="start stretch"
+              fxLayoutGap="0px"
+            >
+              <button
+                mat-raised-button
+                class="primary-button margin-top-1-rem"
+                (click)="createPost(newPost)"
+              >Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

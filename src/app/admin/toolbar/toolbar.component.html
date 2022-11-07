@@ -1,0 +1,22 @@
+<div fxFill fxLayout="row" fxLayoutAlign="start stretch">
+  <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-toolbar
+      [ngClass.xs]="['logo-padding']"
+      fxLayoutAlign="space-between center"
+      fxLayoutAlign.xs="center center"
+    >
+      <div
+        fxFlex="15"
+        fxFlex.xs="80"
+        fxLayout="column"
+        fxLayoutAlign="start stretch"
+      >
+        <img class="full-width" src="../../assets/img/logo.png" alt="" />
+      </div>
+      <div fxLayout="row" fxLayoutGap="1em" fxLayoutAlign="start center">
+        <small>Hi, <span class="username bold-text">{{ user?.firstName}}</span> </small>
+        <mat-icon matTooltip="Logout" class="pointer bold-text">power_settings_new</mat-icon>
+      </div>
+    </mat-toolbar>
+  </div>
+</div>

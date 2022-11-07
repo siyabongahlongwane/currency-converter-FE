@@ -1,86 +1,92 @@
 $primary-color: #f1f1f1;
 $white: white;
 $secondary-color: #004AAB;
+
 .login-background {
   height: 100vh;
   background: linear-gradient(170deg, rgba(0, 0, 0, 0.8), black), url(../../assets/img/home-bg-min.jpg);
   background-size: cover;
 }
-.LoginpositioningText{
+
+.LoginpositioningText {
   position: relative;
   top: 185px;
 }
-.conversionHeader{
+
+.conversionHeader {
   padding: 10px;
 }
-.conversionSubHeader{
+
+.conversionSubHeader {
   padding: 10px;
 }
 
 
 .baseColor {
-    background: $primary-color;
+  background: $primary-color;
 }
 
 .blueBtn {
-    background: $secondary-color;
-    color: $white;
-    width: 50%;
+  background: $secondary-color;
+  color: $white;
+  width: 50%;
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .width30em {
-    width: 30em;
+  width: 30em;
 }
 
 .width37em {
-    width: 37em;
+  width: 37em;
 }
 
 .fullwidth {
-    width: 100%;
+  width: 100%;
 }
 
 .bg-white {
-    background: $white;
-    border-radius: 7px;
+  border-radius: 7px;
 }
 
 .full-height {
-    height: 100vh;
+  height: 100vh;
 }
-.regHeight{
-    height: 66% !important;
+
+.regHeight {
+  height: 66% !important;
 }
+
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
-    margin: -0.4em !important;
+  margin: -0.4em !important;
 }
 
 .marginBottom1em {
-    margin-bottom: 1em !important;
+  margin-bottom: 1em !important;
 }
 
 .width50 {
-    width: 50%;
+  width: 50%;
 }
 
 .height400px {
-    height: 400px;
+  height: 400px;
 }
 
 .mat-raised-button.mat-button-disabled.mat-button-disabled {
 
-    color: #FFFFFF;
-    background-color: #008cba
+  color: #FFFFFF;
+  background-color: #008cba
 }
 
 .logRegTextColor {
-    font-weight: 600;
-    color: grey;
+  font-weight: 600;
+  color: grey;
 }
-.submitBtnWidth{
-    width: 76%;
+
+.submitBtnWidth {
+  width: 100%;
 }

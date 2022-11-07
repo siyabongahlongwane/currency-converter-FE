@@ -9,6 +9,7 @@ import { CommonService } from '../services/common.service'
 import { ContactComponent } from '../contact/contact.component';
 import { TermsDialogComponent } from '../terms-dialog/terms-dialog.component';
 import { PrivacyDialogComponent } from '../privacy-dialog/privacy-dialog.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home-client',
@@ -45,6 +46,7 @@ export class HomeClientComponent implements OnInit {
   submitted: boolean = false;
   constructor(
     private api: ApiService,
+    private userService: UserService,
     private dialog: MatDialog,
     private common: CommonService,
     private ref: ChangeDetectorRef

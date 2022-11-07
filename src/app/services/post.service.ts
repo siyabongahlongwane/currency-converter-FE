@@ -3,25 +3,25 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ApiService {
+export class PostService {
   serverUrl: string = 'http://localhost:5000';
   // serverUrl: string = 'https://currencyratehubapi.herokuapp.com';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getCurrencies(endpoint: any): Observable<any> {
+  getPosts(endpoint: string): Observable<any> {
     const url = `${this.serverUrl}/${endpoint}`;
     return this.http.get<any>(url);
   }
 
-  getCountries(endpoint: any): Observable<any> {
+  addPost(endpoint: string, body: any): Observable<any> {
     const url = `${this.serverUrl}/${endpoint}`;
-    return this.http.get<any>(url);
+    return this.http.post<any>(url, body);
   }
 
-  sendContactEmail(endpoint: string, body: any){
+  sendContactEmail(endpoint: string, body: any) {
     const url = `${this.serverUrl}/${endpoint}`;
     return this.http.post<any>(url, body);
   }

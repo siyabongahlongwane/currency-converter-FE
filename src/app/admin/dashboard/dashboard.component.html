@@ -1,0 +1,27 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" fxFill>
+  <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0.5em">
+      <div fxLayout="column" fxLayoutAlign="start stretch">
+          <h1 class="bold-text-600 remove-default-margin">Dashboard</h1>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxFlex="23" *ngFor="let item of dashboardCards" fxLayout="column" fxLayoutAlign="center stretch">
+              <mat-card>
+                  <mat-card-content>
+                      <div class="pointer" routerLink="{{ item.route }}" fxLayout="row" fxLayoutAlign="start stretch">
+                          <div class="height-100px" fxFlex="60" fxLayout="column" fxLayoutAlign="center center" >
+                              <mat-icon class="primaryBlue {{ item.color }}"> {{ item.icon }} </mat-icon>
+                              <h3 class="bold remove-default-margin"> {{ item.name }} </h3>
+                          </div>
+                          <div class="height-100px white-text bold {{ item.class }}" fxFlex="40" fxLayout="column" fxLayoutAlign="center center">
+                              <span class="cardFont">{{ item?.value }}</span>
+                          </div>
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+          </div>
+      </div>
+      <div class="margin-top-1-rem">
+          <app-latest-posts></app-latest-posts>
+      </div>
+  </div>
+</div>
