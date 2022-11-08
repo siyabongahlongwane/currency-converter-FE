@@ -26,7 +26,6 @@ export class NewPostComponent implements OnInit {
     if(form.invalid) return false;
     return this.postService.addPost(`api/posts/addPost`, form.value).subscribe(res => {
       this.common.openSnackbar(res?.msg);
-      this.router.navigate(['admin/posts']);
     }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
   }
 

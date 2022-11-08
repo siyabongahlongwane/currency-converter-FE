@@ -18,9 +18,9 @@ export class ContainerComponent implements OnInit {
   sidenavItems: any[] = [
     {
       icon: 'home',
-      name: 'Home',
+      name: 'Dashboard',
       class: 'whiteColor',
-      route: 'home',
+      route: 'dashboard',
     },
     {
       icon: 'account_circle',
@@ -30,40 +30,22 @@ export class ContainerComponent implements OnInit {
     },
     {
       icon: 'groups',
-      name: 'Clients',
+      name: 'Users',
       class: 'whiteColor',
-      route: 'clients',
+      route: 'users',
     },
     {
       icon: 'event',
-      name: 'Booking Requests',
+      name: 'Posts',
       class: 'whiteColor',
-      route: 'bookingRequests',
+      route: 'posts',
     },
     {
-      icon: 'apartment',
-      name: 'Reservations',
+      icon: 'comments',
+      name: 'Comments',
       class: 'whiteColor',
-      route: 'reservations',
-    },
-    {
-      icon: 'paid',
-      name: 'Invoices',
-      class: 'whiteColor',
-      route: 'invoices',
-    },
-    {
-      icon: 'emoji_events',
-      name: 'Rewards',
-      class: 'whiteColor',
-      route: 'rewards',
-    },
-    // {
-    //   icon: 'emoji_events',
-    //   name: 'Appointments',
-    //   class: 'whiteColor',
-    //   route: 'appointments',
-    // },
+      route: 'comments',
+    }
   ];
   constructor(private userService: UserService, private router: Router) { }
 

@@ -5,15 +5,14 @@ import { CommonService } from 'src/app/services/common.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
-  selector: 'app-latest-posts',
-  templateUrl: './latest-posts.component.html',
-  styleUrls: ['./latest-posts.component.scss']
+  selector: 'app-comments',
+  templateUrl: './comments.component.html',
+  styleUrls: ['./comments.component.scss']
 })
-export class LatestPostsComponent implements OnInit {
+export class CommentsComponent implements OnInit {
   img: string = '../../assets/img/cookie.png';
-  displayedColumns: string[] = ['photos', 'title', 'category', 'content', 'createdBy', 'createdAt'];
+  displayedColumns: string[] = ['content', 'createdBy', 'createdAt', 'published', 'modifiedBy', 'modifiedAt'];
   user: any = {};
   dataSource = new MatTableDataSource([]);
   constructor(private router: Router, private userService: UserService, private postService: PostService, private common: CommonService) { }
@@ -25,6 +24,7 @@ export class LatestPostsComponent implements OnInit {
 
   getPosts() {
     this.postService.getPosts(`api/posts/getPosts?role=${this.user?.role?.id}&username=${this.user?.username}`).subscribe(res => {
+      // res.posts = []
       this.dataSource = new MatTableDataSource(res?.posts);
     }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
   }

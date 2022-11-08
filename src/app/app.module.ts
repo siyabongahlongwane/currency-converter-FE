@@ -25,6 +25,9 @@ import { LatestPostsComponent } from './admin/latest-posts/latest-posts.componen
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { NewPostComponent } from './admin/new-post/new-post.component';
 import { PostsComponent } from './admin/posts/posts.component';
+import { UsersComponent } from './admin/users/users.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { CommentsComponent } from './admin/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { PostsComponent } from './admin/posts/posts.component';
     ToolbarComponent,
     LatestPostsComponent,
     NewPostComponent,
-    PostsComponent
+    PostsComponent,
+    UsersComponent,
+    AdminProfileComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

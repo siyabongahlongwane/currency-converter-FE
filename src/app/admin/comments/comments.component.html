@@ -6,14 +6,12 @@
     fxLayoutGap="8px"
   >
     <div fxLayout="row" fxLayoutAlign="space-between center">
-      <h1 class="bold-text-600 remove-default-margin">Posts</h1>
-      <button routerLink="../add-post" mat-raised-button class="primary-button  all-buttons">Add New Post</button>
-
+      <h1 class="bold-text-600 remove-default-margin">Comments</h1>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <mat-form-field appearance="standard">
-        <mat-label>Filter Posts</mat-label>
+        <mat-label>Filter Comments</mat-label>
         <input
           matInput
           (keyup)="applyFilter($event)"
