@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { PostService } from 'src/app/services/post.service';
@@ -15,11 +16,17 @@ export class NewPostComponent implements OnInit {
   author: any = {};
   categories: string[] = ['Crypto', 'Exchange Rates', 'Financial', 'Educational'];
   newPost: any = {};
-  constructor(private userService: UserService, private postService: PostService, private common: CommonService, private router: Router) {
+
+  constructor(private userService: UserService, private postService: PostService, private common: CommonService, private router: Router, @Optional() @Inject(MAT_DIALOG_DATA) public data: any ) {
     this.createPostForm();
   }
 
   ngOnInit(): void {
+    if(this.data && this.data.action == 'view'){
+      this.disableForm();
+    } else if(this.data && this.data.action == 'edit'){
+      this.prepopulateForm();
+    }
   }
 
   createPost(form: FormGroup) {
@@ -47,5 +54,14 @@ export class NewPostComponent implements OnInit {
       ]),
       "owner": new FormControl(this.author['username'])
     });
+  }
+
+  disableForm(){
+    this.prepopulateForm();
+    this.newPost.disable();
+  }
+
+  prepopulateForm(){
+    this.newPost.patchValue(this.data.item);
   }
 }
