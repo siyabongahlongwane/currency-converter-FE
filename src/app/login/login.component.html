@@ -1,123 +1,158 @@
-<div fxLayout="row" fxLayoutAlign="space-between center" class="baseColor">
-  <div
-    fxLayout="column"
-    fxLayoutAlign="start stretch"
-    fxFlex="49"
-    class="login-background"
-  >
-    <div
-      class="LoginpositioningText"
-      fxFlex="35"
-      fxFlex.xs="90"
-      fxLayout="column"
-      fxLayoutAlign="center start"
-      fxLayoutAlign.xs="center center"
-    >
-      <h1
-        [ngClass.xs]="['big-header-xs']"
-        class="white-text primary-text big-header conversionHeader"
-      >
+<div fxLayout="row" fxLayoutAlign="space-between center" class="baseColor" *ngIf="!showLogReg">
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="login-background">
+    <div class="LoginpositioningText" fxFlex="35" fxFlex.xs="90" fxLayout="column" fxLayoutAlign="center start"
+      fxLayoutAlign.xs="center center">
+      <h1 [ngClass.xs]="['big-header-xs']" class="white-text primary-text big-header conversionHeader">
         Conversion, just made easier!
       </h1>
-      <h1
-        class="white-text bold-text conversionSubHeader"
-        [ngStyle.xs]="'text-align: center'"
-      >
+      <h1 class="white-text bold-text conversionSubHeader" [ngStyle.xs]="'text-align: center'">
         Check live foreign currency exchange rates with our lightning fast
         currency API.
       </h1>
     </div>
   </div>
   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49">
-    <div
-      class="maincontainer baseColor"
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      fxFill
-    >
+    <div class="maincontainer baseColor" fxLayout="column" fxLayoutAlign="center center" fxFill>
       <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
-        <div
-          fxLayout="column"
-          fxLayoutAlign="center center"
-          fxFlex="50"
-          class="bg-white width30em height400px"
-        >
-          <div
-            fxLayout="row"
-            fxLayoutAlign="start stretch"
-            class="fullwidth"
-          ><h1>Login</h1></div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="50" class="bg-white width30em height400px">
+          <div fxLayout="row" fxLayoutAlign="start stretch" class="fullwidth">
+            <h1>Login</h1>
+          </div>
           <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
             <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
               <form [formGroup]="login" class="fullwidth">
-                <div
-                  fxLayout="row"
-                  fxLayoutAlign="start stretch"
-                  class="marginBottom1em"
-                >
-                  <div
-                    fxLayout="column"
-                    fxLayoutAlign="start stretch"
-                    fxFlex="100"
-                  >
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                     <mat-form-field appearance="outline">
                       <mat-label>Username</mat-label>
-                      <input
-                        matInput
-                        placeholder="Username"
-                        type="email"
-                        formControlName="username"
-                      />
+                      <input matInput placeholder="Username" type="email" formControlName="username" />
                       <mat-error
-                        *ngIf="(login.controls['username']?.touched && login.controls['username']?.errors?.['required'])"
-                      >
-                        Username is required</mat-error
-                      >
+                        *ngIf="(login.controls['username']?.touched && login.controls['username']?.errors?.['required'])">
+                        Username is required</mat-error>
                     </mat-form-field>
                   </div>
                 </div>
-                <div
-                  fxLayout="row"
-                  fxLayoutAlign="start stretch"
-                  class="marginBottom1em"
-                >
-                  <div
-                    fxLayout="column"
-                    fxLayoutAlign="start stretch"
-                    fxFlex="100"
-                  >
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                     <mat-form-field appearance="outline">
                       <mat-label>Password</mat-label>
-                      <input
-                        matInput
-                        placeholder="Password"
-                        type="password"
-                        formControlName="password"
-                      />
+                      <input matInput placeholder="Password" type="password" formControlName="password" />
                       <mat-error
-                        *ngIf="(login.controls['password']?.touched && login.controls['password']?.errors?.['required'])"
-                      >
-                        Password is required</mat-error
-                      >
+                        *ngIf="(login.controls['password']?.touched && login.controls['password']?.errors?.['required'])">
+                        Password is required</mat-error>
                       <mat-error
-                        *ngIf="(login.controls['password']?.touched && login.controls['password']?.errors?.['minlength'])"
-                      >
+                        *ngIf="(login.controls['password']?.touched && login.controls['password']?.errors?.['minlength'])">
                         Mininmum length is 4 characters
                       </mat-error>
                     </mat-form-field>
                   </div>
                 </div>
               </form>
+              <div class="logRegTextMarinBottom">Not a user.? <span class="pointer primary-text-color font-weight600"
+                  (click)="showLogReg = !showLogReg">Register</span></div>
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlign="start stretch" class="full-width">
-            <button
-              mat-raised-button
-              class="blueBtn"
-              (click)="onSubmit(login)"
-              [disabled]="login.invalid"
-            >
+            <button mat-raised-button class="blueBtn" (click)="onSubmit(login)" [disabled]="login.invalid">
               Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayoutAlign="space-between center" class="baseColor" *ngIf="showLogReg">
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49" class="login-background">
+    <div class="LoginpositioningText" fxFlex="35" fxFlex.xs="90" fxLayout="column" fxLayoutAlign="center start"
+      fxLayoutAlign.xs="center center">
+      <h1 [ngClass.xs]="['big-header-xs']" class="white-text primary-text big-header conversionHeader">
+        Conversion, just made easier!
+      </h1>
+      <h1 class="white-text bold-text conversionSubHeader" [ngStyle.xs]="'text-align: center'">
+        Check live foreign currency exchange rates with our lightning fast
+        currency API.
+      </h1>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49">
+    <div class="maincontainer baseColor" fxLayout="column" fxLayoutAlign="center center" fxFill>
+      <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="50" class="bg-white width30em height400px">
+          <div fxLayout="row" fxLayoutAlign="start stretch" class="fullwidth">
+            <h1>Register</h1>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
+            <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+              <form [formGroup]="register" class="fullwidth">
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                    <mat-form-field appearance="outline">
+                      <mat-label>First Name</mat-label>
+                      <input matInput placeholder="First Name" type="text" formControlName="firstName" />
+                      <mat-error
+                        *ngIf="(register.controls['firstName']?.touched && register.controls['firstName']?.errors?.['required'])">
+                        First Name is required</mat-error>
+                      <mat-error
+                        *ngIf="(register.controls.firstName.errors?.['pattern']) && (register.controls.firstName.touched)">
+                        First Name Should Contain Letters Only </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Last Name</mat-label>
+                      <input matInput placeholder="Last Name" type="text" formControlName="lastName" />
+                      <mat-error
+                        *ngIf="(register.controls['lastName']?.touched && register.controls['lastName']?.errors?.['required'])">
+                        Last Name is required</mat-error>
+                      <mat-error
+                        *ngIf="(register.controls.lastName.errors?.['pattern']) && (register.controls.lastName.touched)">
+                        Last Name Should Contain Letters Only </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Username</mat-label>
+                      <input matInput placeholder="Username" type="email" formControlName="username" />
+                      <mat-error
+                        *ngIf="(register.controls['username']?.touched && register.controls['username']?.errors?.['required'])">
+                        Username is required</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start stretch" class="marginBottom1em">
+                  <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Password</mat-label>
+                      <input matInput placeholder="Password" type="password" formControlName="password" />
+                      <mat-error
+                        *ngIf="(register.controls['password']?.touched && register.controls['password']?.errors?.['required'])">
+                        Password is required</mat-error>
+                      <mat-error
+                        *ngIf="(register.controls['password']?.touched && register.controls['password']?.errors?.['minlength'])">
+                        Mininmum length is 4 characters
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </form>
+              <div class="logRegTextMarinBottom">Already a User.? <span
+                  class="pointer primary-text-color font-weight600" (click)="showLogReg = !showLogReg">Login</span>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start stretch" class="full-width">
+            <button mat-raised-button class="blueBtn" (click)="onSubmitRe(register)" [disabled]="login.invalid">
+              Register
             </button>
           </div>
         </div>

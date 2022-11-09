@@ -101,6 +101,14 @@ app-toolbar {
   transform: rotate(90deg) !important;
 }
 
+.primary-text-color{
+  color: $primaryGreen;
+}
+
+.font-weight600{
+  font-weight: 600;
+}
+
 .primary-button {
   background: $primaryGreen;
   color: $white;

@@ -10,7 +10,7 @@ export interface User {
     username: string,
     password: string,
     role: string,
-    privileges: string,
+    privileges: object,
   }
   msg: string
 }
@@ -19,8 +19,8 @@ export interface User {
 })
 export class UserService {
 
-  serverUrl: string = 'http://localhost:5000';
-  // serverUrl: string = 'https://currencyratehubapi.herokuapp.com';
+  // serverUrl: string = 'http://localhost:5000';
+  serverUrl: string = 'https://currencyratehubapi.herokuapp.com';
 
   constructor(private http: HttpClient) {
 
