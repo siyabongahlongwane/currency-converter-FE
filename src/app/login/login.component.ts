@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   register = new FormGroup({
     firstName: new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
     lastName: new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
-    email: new FormControl('', [Validators.required]),
     role: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
