@@ -48,4 +48,24 @@ export class UserService {
       const url = `${this.serverUrl}/${endpoint}/${username}`;
       return this.http.get<any>(url);
   }
+
+  getUsers(endpoint: string): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.get<any>(url);
+  }
+
+  addUser(endpoint: string, body: any): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.post<any>(url, body);
+  }
+
+  deleteUser(endpoint: string): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.delete<any>(url);
+  }
+
+  updateUser(endpoint: string, body: any): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.put<any>(url, body);
+  }
 }

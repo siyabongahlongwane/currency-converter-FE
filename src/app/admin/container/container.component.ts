@@ -22,12 +22,12 @@ export class ContainerComponent implements OnInit {
       class: 'whiteColor',
       route: 'dashboard',
     },
-    {
-      icon: 'account_circle',
-      name: 'Profile',
-      class: 'whiteColor',
-      route: 'profile',
-    },
+    // {
+    //   icon: 'account_circle',
+    //   name: 'Profile',
+    //   class: 'whiteColor',
+    //   route: 'profile',
+    // },
     {
       icon: 'groups',
       name: 'Users',

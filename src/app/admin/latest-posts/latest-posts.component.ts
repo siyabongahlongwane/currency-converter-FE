@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { NewPostComponent } from '../new-post/new-post.component';
 
 
 @Component({
@@ -13,10 +16,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LatestPostsComponent implements OnInit {
   img: string = '../../assets/img/cookie.png';
-  displayedColumns: string[] = ['photos', 'title', 'category', 'content', 'createdBy', 'createdAt', 'action'];
+  displayedColumns: string[] = ['photos', 'title', 'category', 'content', 'createdBy', 'createdAt', 'published', 'action'];
   user: any = {};
   dataSource = new MatTableDataSource([]);
-  constructor(private router: Router, private userService: UserService, private postService: PostService, private common: CommonService) { }
+  constructor(private router: Router, private userService: UserService, private postService: PostService, private common: CommonService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(this.userService.checkSession());
@@ -34,7 +37,36 @@ export class LatestPostsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openDialog(action: string, item: any){
+  openDialog(action: string, item: any) {
+    if (action === 'view') {
+      this.dialog.open(NewPostComponent, { data: { item, disableInputs: true, action }, disableClose: true });
+    } else if (action === 'edit') {
+      this.dialog.open(NewPostComponent, { data: { item, disableInputs: false, action, disableClose: true } }).afterClosed().subscribe(updatedRecord => {
+        if (updatedRecord) {
+          updatedRecord['_id'] = item['_id'];
+          this.updateRecord(updatedRecord)
+        }
+      })
+    } else {
+      this.dialog.open(ConfirmDialogComponent).afterClosed().subscribe(confirmDelete => {
+        if (confirmDelete) {
+          this.deleteRecord(item['_id']);
+        }
+      })
+    }
+  }
 
+  deleteRecord(id: string) {
+    this.postService.deletePost(`api/posts/deletePost/${id}`).subscribe(res => {
+      this.common.openSnackbar(res?.msg);
+      this.getPosts();
+    }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
+  }
+
+  updateRecord(body: any) {
+    this.postService.updatePost(`api/posts/updatePost/${body['_id']}`, body).subscribe(res => {
+      this.common.openSnackbar(res?.msg);
+      this.getPosts();
+    }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
   }
 }

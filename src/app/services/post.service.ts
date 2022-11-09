@@ -21,6 +21,16 @@ export class PostService {
     return this.http.post<any>(url, body);
   }
 
+  deletePost(endpoint: string): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.delete<any>(url);
+  }
+
+  updatePost(endpoint: string, body: any): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.put<any>(url, body);
+  }
+
   sendContactEmail(endpoint: string, body: any) {
     const url = `${this.serverUrl}/${endpoint}`;
     return this.http.post<any>(url, body);

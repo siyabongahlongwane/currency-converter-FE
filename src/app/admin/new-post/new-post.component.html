@@ -5,8 +5,9 @@
     fxLayoutAlign="start stretch"
     fxLayoutGap="0.5em"
   >
-    <div fxLayout="column" fxLayoutAlign="start stretch">
-      <h1 class="bold-text-600 remove-default-margin">Create New Post</h1> {{ newPost.valid | json }}
+    <div fxLayout="row" fxLayoutAlign="space-between stretch">
+      <h1 class="bold-text-600 remove-default-margin">{{this.data?.action ? (this.data.action | uppercase ): 'Create New'}} Post</h1>
+      <mat-icon mat-dialog-close="" class="pointer red-text">cancel_highlight</mat-icon>
     </div>
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
@@ -80,18 +81,24 @@
               </span>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="start stretch" class="full-width">
+          <div *ngIf="data?.action !== 'view'" fxLayout="row" fxLayoutAlign="start stretch" class="full-width">
             <div
-              fxFlex="10"
+              fxFlex="20"
               fxLayout="column"
               fxLayoutAlign="start stretch"
               fxLayoutGap="0px"
             >
-              <button
+              <button *ngIf="!data?.action"
                 mat-raised-button
                 class="primary-button margin-top-1-rem"
                 (click)="createPost(newPost)"
-              >Submit
+              > Submit
+              </button>
+              <button *ngIf="data?.action == 'edit'"
+                mat-raised-button
+                class="primary-button margin-top-1-rem"
+                [mat-dialog-close]="newPost.value"
+              > {{ data?.action == 'edit' ? 'Update' : 'Submit' }}
               </button>
             </div>
           </div>
