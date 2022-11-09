@@ -46,12 +46,15 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmitRe(regForm: any): any {
+  onSubmitReg(regForm: any): any {
     if (regForm.invalid) {
       this.snackBar.open('Invalid Username', 'Dismiss');
       return false;
     } else {
       console.log("Hi", regForm)
+      this.userService.addUser(`api/users/addUser`,regForm.value).subscribe(res => {
+        this.common.openSnackbar(res?.msg);
+      }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
       // this.userService.login(`api/users/login?username=${form.value.username}&password=${form.value.password}`).subscribe(res => {
       //   this.common.openSnackbar(res?.msg);
       //   this.userService.saveSession(res?.user);
