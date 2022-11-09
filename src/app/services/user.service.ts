@@ -2,18 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface User {
-  user: {
-    _id: string,
-    firstName: string,
-    lastName: string,
-    username: string,
-    password: string,
-    role: string,
-    privileges: object,
-  }
-  msg: string
-}
+// export interface User {
+//   user: {
+//     _id: string,
+//     firstName: string,
+//     lastName: string,
+//     username: string,
+//     password: string,
+//     role: {
+//       id: string,
+//       description: string
+//     },
+//     privileges: object,
+//   }
+//   msg: string
+// }
 @Injectable({
   providedIn: 'root'
 })
@@ -26,9 +29,9 @@ export class UserService {
 
   }
 
-  login(endpoint: any): Observable<User> {
+  login(endpoint: any): Observable<any> {
     const url = `${this.serverUrl}/${endpoint}`;
-    return this.http.get<User>(url);
+    return this.http.get<any>(url);
   }
 
   checkSession(): any {

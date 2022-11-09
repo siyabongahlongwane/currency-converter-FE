@@ -25,7 +25,7 @@
                   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                     <mat-form-field appearance="outline">
                       <mat-label>Username</mat-label>
-                      <input matInput placeholder="Username" type="email" formControlName="username" />
+                      <input matInput placeholder="Username" type="text" formControlName="username" />
                       <mat-error
                         *ngIf="(login.controls['username']?.touched && login.controls['username']?.errors?.['required'])">
                         Username is required</mat-error>
@@ -36,7 +36,10 @@
                   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                     <mat-form-field appearance="outline">
                       <mat-label>Password</mat-label>
-                      <input matInput placeholder="Password" type="password" formControlName="password" />
+                      <input matInput placeholder="Password"  [type]="hide ? 'password' : 'text'" formControlName="password" />
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
                       <mat-error
                         *ngIf="(login.controls['password']?.touched && login.controls['password']?.errors?.['required'])">
                         Password is required</mat-error>
@@ -122,7 +125,7 @@
                   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                     <mat-form-field appearance="outline">
                       <mat-label>Username</mat-label>
-                      <input matInput placeholder="Username" type="email" formControlName="username" />
+                      <input matInput placeholder="Username" type="text" formControlName="username" />
                       <mat-error
                         *ngIf="(register.controls['username']?.touched && register.controls['username']?.errors?.['required'])">
                         Username is required</mat-error>
@@ -133,7 +136,11 @@
                   <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                     <mat-form-field appearance="outline">
                       <mat-label>Password</mat-label>
-                      <input matInput placeholder="Password" type="password" formControlName="password" />
+
+                      <input matInput placeholder="Password"  [type]="hide ? 'password' : 'text'" formControlName="password" />
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
                       <mat-error
                         *ngIf="(register.controls['password']?.touched && register.controls['password']?.errors?.['required'])">
                         Password is required</mat-error>
@@ -145,13 +152,13 @@
                   </div>
                 </div>
               </form>
-              <div class="logRegTextMarinBottom">Already a User.? <span
+              <div class="logRegTextMarinBottom">Already a User? <span
                   class="pointer primary-text-color font-weight600" (click)="showLogReg = !showLogReg">Login</span>
               </div>
             </div>
           </div>
           <div fxLayout="row" fxLayoutAlign="start stretch" class="full-width">
-            <button mat-raised-button class="blueBtn" (click)="onSubmitReg(register)" [disabled]="login.invalid">
+            <button mat-raised-button class="blueBtn" (click)="onSubmitReg(register)" [disabled]="register.invalid">
               Register
             </button>
           </div>

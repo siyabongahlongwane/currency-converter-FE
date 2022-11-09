@@ -7,7 +7,7 @@
   >
     <div fxLayout="row" fxLayoutAlign="space-between stretch">
       <h1 class="bold-text-600 remove-default-margin">{{this.data?.action ? (this.data.action | uppercase ): 'Create New'}} Post</h1>
-      <mat-icon mat-dialog-close="" class="pointer red-text">cancel_highlight</mat-icon>
+      <mat-icon mat-dialog-close class="pointer red-text">cancel_highlight</mat-icon>
     </div>
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
@@ -41,7 +41,7 @@
                   <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
                 </mat-select>
                 <mat-error
-                  *ngIf="(newPost.controls['title']?.touched && newPost.controls['title']?.errors?.['required'])"
+                  *ngIf="(newPost.controls['category']?.touched && newPost.controls['category']?.errors?.['required'])"
                 >
                 Category is required</mat-error
                 >

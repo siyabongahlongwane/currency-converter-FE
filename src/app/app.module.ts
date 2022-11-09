@@ -32,6 +32,7 @@ import { ConfirmDialogComponent } from './admin/confirm-dialog/confirm-dialog.co
 import { GenericPostDialogComponent } from './admin/generic-post-dialog/generic-post-dialog.component';
 import { GenericCommentsDialogComponent } from './admin/generic-comments-dialog/generic-comments-dialog.component';
 import { GenericUserDialogComponent } from './admin/generic-user-dialog/generic-user-dialog.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { GenericUserDialogComponent } from './admin/generic-user-dialog/generic-
     ConfirmDialogComponent,
     GenericPostDialogComponent,
     GenericCommentsDialogComponent,
-    GenericUserDialogComponent
+    GenericUserDialogComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

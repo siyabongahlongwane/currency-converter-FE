@@ -12,13 +12,14 @@ import { LatestPostsComponent } from './admin/latest-posts/latest-posts.componen
 import { UsersComponent } from './admin/users/users.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { CommentsComponent } from './admin/comments/comments.component';
+import { BlogComponent } from './blog/blog.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'client/home', pathMatch: 'full' },
-  { path: '', component: HomeClientComponent },
   // { path: '**', component: HomeClientComponent },
   { path: 'client/home', component: HomeClientComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'blog', component: BlogComponent },
   {
     path: 'admin', component: ContainerComponent, canLoad: [AdminGuard], canActivateChild: [AdminGuard], children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

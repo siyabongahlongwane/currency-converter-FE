@@ -6,7 +6,6 @@ import { CommonService } from 'src/app/services/common.service';
 import { UserService } from 'src/app/services/user.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { GenericUserDialogComponent } from '../generic-user-dialog/generic-user-dialog.component';
-import { NewPostComponent } from '../new-post/new-post.component';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -22,6 +21,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(this.userService.checkSession());
     this.getUsers();
+    this.openNewUserDialog();
   }
 
   getUsers() {

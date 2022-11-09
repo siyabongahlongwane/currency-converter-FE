@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  // getRole: string = '';
+  hide: boolean = false;
   showLogReg: boolean = false;
   login = new FormGroup({
     username: new FormControl('', [Validators.required]),
@@ -19,46 +19,51 @@ export class LoginComponent implements OnInit {
   });
 
   register = new FormGroup({
-    firstName: new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
-    lastName: new FormControl('',[Validators.required,Validators.pattern("^[a-zA-Z]+$")]),
-    role: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z]+$")]),
+    lastName: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z]+$")]),
+    role: new FormControl({
+      id: 'GU',
+      description: 'Generic User'
+    }, [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
+    priviledges: new FormControl({
+      "canAdd": true,
+      "canEdit": true,
+      "canView": true,
+      "canDelete": true,
+      "canApprove": false,
+      "canPublish": false
+    }, [Validators.required])
   });
 
   constructor(private snackBar: MatSnackBar, private router: Router, private userService: UserService, private common: CommonService) { }
 
-  ngOnInit(): void { 
-    // this.getRole = sessionStorage.getItem('user')
+  ngOnInit(): void {
   }
 
   onSubmit(form: any): any {
     if (form.invalid) {
-      this.snackBar.open('Invalid Username', 'Dismiss');
+      this.common.openSnackbar('All fields are required');
       return false;
     } else {
       this.userService.login(`api/users/login?username=${form.value.username}&password=${form.value.password}`).subscribe(res => {
         this.common.openSnackbar(res?.msg);
         this.userService.saveSession(res?.user);
-        this.router.navigate(['admin/dashboard']);
+        ['SU', 'AD'].includes(res?.user?.role?.id) ? this.router.navigate(['admin/dashboard']) : this.router.navigate(['blog'])
       }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
     }
   }
 
   onSubmitReg(regForm: any): any {
     if (regForm.invalid) {
-      this.snackBar.open('Invalid Username', 'Dismiss');
+      this.common.openSnackbar('All fields are required');
       return false;
     } else {
-      console.log("Hi", regForm)
-      this.userService.addUser(`api/users/addUser`,regForm.value).subscribe(res => {
+      this.userService.addUser(`api/users/addUser`, regForm.value).subscribe(res => {
         this.common.openSnackbar(res?.msg);
+        this.showLogReg = !this.showLogReg;
       }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
-      // this.userService.login(`api/users/login?username=${form.value.username}&password=${form.value.password}`).subscribe(res => {
-      //   this.common.openSnackbar(res?.msg);
-      //   this.userService.saveSession(res?.user);
-      //   this.router.navigate(['admin/dashboard']);
-      // }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
     }
   }
 

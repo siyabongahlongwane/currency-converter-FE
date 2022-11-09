@@ -1,1 +1,262 @@
-<p>generic-user-dialog works!</p>
+<div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+  <div
+    class="maincontainer baseColor"
+    fxLayout="column"
+    fxLayoutAlign="start stretch"
+    fxFill
+  >
+    <div fxLayout="row" fxLayoutAlign="start stretch" class="fullwidth">
+      <div
+        fxLayout="column"
+        fxLayoutAlign="start stretch"
+        fxFlex="100"
+        class="bg-white width30em height400px"
+      >
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+          class="fullwidth"
+        >
+          <h1 class="remove-default-margin">
+            {{
+              this.data?.action ? (this.data.action | uppercase) : "CREATE NEW"
+            }}
+            USER
+          </h1>
+          <mat-icon mat-dialog-close="" class="pointer red-text"
+            >cancel_highlight</mat-icon
+          >
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
+          <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+            <form [formGroup]="register" class="fullwidth">
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start stretch"
+                class="marginBottom1em"
+              ></div>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between stretch"
+                class="marginBottom1em"
+              >
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="start stretch"
+                  fxFlex="49"
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input
+                      matInput
+                      placeholder="First Name"
+                      type="text"
+                      formControlName="firstName"
+                    />
+                    <mat-error
+                      *ngIf="(register.controls['firstName']?.touched && register.controls['firstName']?.errors?.['required'])"
+                    >
+                      First Name is required</mat-error
+                    >
+                    <mat-error
+                      *ngIf="(register.controls.firstName.errors?.['pattern']) && (register.controls.firstName.touched)"
+                    >
+                      First Name Should Contain Letters Only
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="start stretch"
+                  fxFlex="49"
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input
+                      matInput
+                      placeholder="Last Name"
+                      type="text"
+                      formControlName="lastName"
+                    />
+                    <mat-error
+                      *ngIf="(register.controls['lastName']?.touched && register.controls['lastName']?.errors?.['required'])"
+                    >
+                      Last Name is required</mat-error
+                    >
+                    <mat-error
+                      *ngIf="(register.controls.lastName.errors?.['pattern']) && (register.controls.lastName.touched)"
+                    >
+                      Last Name Should Contain Letters Only
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between stretch"
+                class="marginBottom1em"
+              ></div>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="space-between stretch"
+                class="marginBottom1em"
+              >
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="start stretch"
+                  fxFlex="49"
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input
+                      matInput
+                      placeholder="Username"
+                      type="text"
+                      formControlName="username"
+                    />
+                    <mat-error
+                      *ngIf="(register.controls['username']?.touched && register.controls['username']?.errors?.['required'])"
+                    >
+                      Username is required</mat-error
+                    >
+                  </mat-form-field>
+                </div>
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="start stretch"
+                  fxFlex="49"
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+
+                    <input
+                      matInput
+                      placeholder="Password"
+                      [type]="hide ? 'password' : 'text'"
+                      formControlName="password"
+                    />
+                    <button
+                      mat-icon-button
+                      matSuffix
+                      (click)="hide = !hide"
+                      [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide"
+                    >
+                      <mat-icon>{{
+                        hide ? "visibility_off" : "visibility"
+                      }}</mat-icon>
+                    </button>
+                    <mat-error
+                      *ngIf="(register.controls['password']?.touched && register.controls['password']?.errors?.['required'])"
+                    >
+                      Password is required</mat-error
+                    >
+                    <mat-error
+                      *ngIf="(register.controls['password']?.touched && register.controls['password']?.errors?.['minlength'])"
+                    >
+                      Mininmum length is 4 characters
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start stretch"
+                fxLayoutGap="0px"
+              >
+                <div
+                  fxLayout="column"
+                  fxLayoutAlign="start stretch"
+                  fxFlex="100"
+                >
+                  <mat-form-field appearance="outline">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role">
+                      <mat-option *ngFor="let role of roles" [value]="role">{{
+                        role.description
+                      }}</mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="(register.controls['role']?.touched && register.controls['role']?.errors?.['required'])"
+                    >
+                      Category is required</mat-error
+                    >
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start stretch"
+                fxLayoutGap="1em"
+              >
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+                  <mat-slide-toggle formControlName="canAdd"
+                    >Can Add</mat-slide-toggle
+                  >
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+                  <mat-slide-toggle formControlName="canView"
+                    >Can View</mat-slide-toggle
+                  >
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+                  <mat-slide-toggle formControlName="canDelete"
+                    >Can Delete</mat-slide-toggle
+                  >
+                </div>
+              </div>
+              <div
+                fxLayout="row"
+                fxLayoutAlign="start stretch"
+                fxLayoutGap="1em"
+              >
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+                  <mat-slide-toggle formControlName="canEdit"
+                    >Can Edit</mat-slide-toggle
+                  >
+                </div>
+
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+                  <mat-slide-toggle formControlName="canApprove"
+                    >Can Approve</mat-slide-toggle
+                  >
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start stretch">
+                  <mat-slide-toggle formControlName="canPublish"
+                    >Can Publish</mat-slide-toggle
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          class="margin-top-1-rem"
+          fxLayout="row"
+          fxLayoutAlign="start stretch"
+        >
+          <button
+            mat-raised-button
+            mat-dialog-close
+            class="primaryBlueBtn white-text"
+            (click)="onSubmitReg(register)"
+            [disabled]="register.invalid"
+          >
+            Add User
+          </button>
+          <button
+            mat-raised-button
+            [mat-dialog-close]="register"
+            class="primaryBlueBtn white-text"
+            [disabled]="register.invalid"
+          >
+            Edit User
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

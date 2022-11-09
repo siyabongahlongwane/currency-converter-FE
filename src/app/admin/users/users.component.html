@@ -22,7 +22,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="table-style" fxLayout="row" fxLayoutAlign="start stretch">
+    <div class="table-style height-325px" fxLayout="row" fxLayoutAlign="start stretch">
       <table
         mat-table
         [dataSource]="dataSource"
@@ -42,7 +42,7 @@
         <ng-container matColumnDef="username">
           <th mat-header-cell *matHeaderCellDef>Username</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.username }}...
+            {{ element.username }}
           </td>
         </ng-container>
 

@@ -452,7 +452,7 @@ app-dashboard .mat-card {
   width: 100%;
   min-width: 100%;
   margin-bottom: 1em;
-  max-height: 220px !important;
+  max-height: 220px;
   overflow-y: auto;
 
   .all-tables {
@@ -517,3 +517,6 @@ body {
 }
 
 
+.height-325px {
+  max-height: 325px !important;
+}
