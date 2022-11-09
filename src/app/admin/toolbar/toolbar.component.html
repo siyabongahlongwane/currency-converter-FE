@@ -15,7 +15,7 @@
       </div>
       <div fxLayout="row" fxLayoutGap="1em" fxLayoutAlign="start center">
         <small>Hi, <span class="username bold-text">{{ user?.firstName}}</span> </small>
-        <mat-icon matTooltip="Logout" class="pointer bold-text">power_settings_new</mat-icon>
+        <mat-icon (click)="logout()" matTooltip="Logout" class="pointer bold-text">power_settings_new</mat-icon>
       </div>
     </mat-toolbar>
   </div>

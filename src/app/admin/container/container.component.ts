@@ -52,9 +52,4 @@ export class ContainerComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(this.userService.checkSession());
   }
-
-  logout() {
-    this.userService.destroySession();
-    this.router.navigate(['login']);
-  }
 }

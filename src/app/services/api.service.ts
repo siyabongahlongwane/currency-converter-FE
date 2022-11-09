@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  serverUrl: string = 'http://localhost:5000';
-  // serverUrl: string = 'https://currencyratehubapi.herokuapp.com';
+  // serverUrl: string = 'http://localhost:5000';
+  serverUrl: string = 'https://currencyratehubapi.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 

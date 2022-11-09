@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
       class: 'greenBackground',
       color: 'greenColor',
       value: 0,
-      route: '../clients',
+      route: '../users',
     },
     {
       icon: 'pending_actions',
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
       class: 'blueBackground',
       color: 'blueColor',
       value: 0,
-      route: '../appointments',
+      route: '../posts',
     },
     {
       icon: 'comment',
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
       class: 'orangeBackground',
       color: 'orangeColor',
       value: 0,
-      route: '../reservations',
+      route: '../comments',
     },
     {
       icon: 'person_off',
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
       class: 'redBackground',
       color: 'redColor',
       value: 0,
-      route: '../invoices',
+      route: '../users',
     },
   ];
   constructor() { }

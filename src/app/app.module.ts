@@ -28,6 +28,10 @@ import { PostsComponent } from './admin/posts/posts.component';
 import { UsersComponent } from './admin/users/users.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { CommentsComponent } from './admin/comments/comments.component';
+import { ConfirmDialogComponent } from './admin/confirm-dialog/confirm-dialog.component';
+import { GenericPostDialogComponent } from './admin/generic-post-dialog/generic-post-dialog.component';
+import { GenericCommentsDialogComponent } from './admin/generic-comments-dialog/generic-comments-dialog.component';
+import { GenericUserDialogComponent } from './admin/generic-user-dialog/generic-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { CommentsComponent } from './admin/comments/comments.component';
     PostsComponent,
     UsersComponent,
     AdminProfileComponent,
-    CommentsComponent
+    CommentsComponent,
+    ConfirmDialogComponent,
+    GenericPostDialogComponent,
+    GenericCommentsDialogComponent,
+    GenericUserDialogComponent
   ],
   imports: [
     BrowserModule,

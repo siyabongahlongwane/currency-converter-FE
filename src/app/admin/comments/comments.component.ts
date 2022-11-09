@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CommentsComponent implements OnInit {
   img: string = '../../assets/img/cookie.png';
-  displayedColumns: string[] = ['content', 'createdBy', 'createdAt', 'published', 'modifiedBy', 'modifiedAt'];
+  displayedColumns: string[] = ['content', 'createdBy', 'createdAt', 'published', 'modifiedBy', 'modifiedAt', 'action'];
   user: any = {};
   dataSource = new MatTableDataSource([]);
   constructor(private router: Router, private userService: UserService, private postService: PostService, private common: CommonService) { }
@@ -32,5 +32,9 @@ export class CommentsComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog(action: string, item: any){
+
   }
 }
