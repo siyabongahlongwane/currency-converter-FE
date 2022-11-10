@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  // serverUrl: string = 'http://localhost:8081';
+  // serverUrl: string = 'http://localhost:5000';
   serverUrl: string = 'https://currencyratehubapi.herokuapp.com';
 
   constructor(private http: HttpClient) {}
@@ -25,4 +25,5 @@ export class ApiService {
     const url = `${this.serverUrl}/${endpoint}`;
     return this.http.post<any>(url, body);
   }
+
 }

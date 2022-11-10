@@ -1,0 +1,42 @@
+<div fxLayout="row" fxLayoutAlign="start stretch">
+  <app-toolbar [user]="user"></app-toolbar>
+</div>
+<div fxLayout="row" fxLayoutAlign="start stretch">
+  <div fxFlex="100" fxFill fxLayout="column" fxLayoutAlign="start stretch">
+    <div
+    class="spinner absolute"
+    *ngIf="spinner"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxFill
+  >
+    <mat-progress-spinner style="z-index: 99999 !important" [mode]="mode">
+    </mat-progress-spinner>
+  </div>
+
+
+      <mat-drawer-container class="sidenavContainer">
+          <mat-drawer fxHide.xs="true" class="sidenav primary-background" #sidenav opened mode="side" disableClose>
+              <div class="avatar-wrapper relative margin-top-1-rem" fxLayout="column" fxLayoutAlign="center center">
+                  <div class="avatar" fxLayoutAlign="center center">
+                   <span> {{ user['firstName'][0] + user['lastName'][0]}}</span>
+                  </div>
+              </div>
+              <div fxLayout="column" fxLayoutAlign="center center">
+                  <h2 class="bold-text whiteColor remove-default-margin"> {{ user['firstName'] + ' ' + user['lastName']}} </h2>
+                  <label class="font17px blue-text">{{ user['role']['description'] }}</label>
+              </div>
+              <div *ngFor="let item of sidenavItems; let i= index " fxLayout="column " fxLayoutAlign="center stretch ">
+                  <div [ngClass]="(i==0 ) ? 'margin-top-1-rem' : ''" class="sidenavItem whiteColor pointer " routerLink="{{ item.route }}" routerLinkActive="active" fxLayout="row " fxLayoutAlign="start center " fxLayoutGap="10px ">
+                      <mat-icon>{{item.icon}}</mat-icon> <span>{{ item.name }}</span>
+                  </div>
+              </div>
+          </mat-drawer>
+          <mat-drawer-content class="padding-20px ">
+            <mat-card class="router-height">
+              <router-outlet></router-outlet>
+            </mat-card>
+          </mat-drawer-content>
+      </mat-drawer-container>
+  </div>
+</div>
