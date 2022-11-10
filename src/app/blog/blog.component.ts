@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-blog',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
+  user: any = {};
 
-  constructor() { }
+  constructor( private userService: UserService ) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(this.userService.checkSession());
   }
 
 }
