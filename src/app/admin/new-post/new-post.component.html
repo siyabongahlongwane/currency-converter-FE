@@ -7,7 +7,7 @@
   >
     <div fxLayout="row" fxLayoutAlign="space-between stretch">
       <h1 class="bold-text-600 remove-default-margin">{{this.data?.action ? (this.data.action | uppercase ): 'Create New'}} Post</h1>
-      <mat-icon mat-dialog-close class="pointer red-text">cancel_highlight</mat-icon>
+      <mat-icon *ngIf="this?.data?.action" mat-dialog-close class="pointer red-text">cancel_highlight</mat-icon>
     </div>
     <div fxLayout="row" fxLayoutAlign="start stretch">
       <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">

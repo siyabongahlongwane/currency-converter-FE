@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/services/common.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { NewPostComponent } from '../new-post/new-post.component';
@@ -21,7 +22,7 @@ export class DashboardComponent implements OnInit {
       name: 'Active Users',
       class: 'greenBackground',
       color: 'greenColor',
-      value: 0,
+      value: this.counts.activeUsers,
       route: '../users',
     },
     {
@@ -42,17 +43,20 @@ export class DashboardComponent implements OnInit {
     },
     {
       icon: 'person_off',
-      name: 'Deleted Users',
+      name: 'Inactive Users',
       class: 'redBackground',
       color: 'redColor',
       value: 0,
       route: '../users',
     },
   ];
-  constructor() { }
+  constructor(private userService: UserService, private common: CommonService) { }
 
   ngOnInit(): void {
-
+    this.userService.getUsersCount('api/users/getUserCount').subscribe(res => {
+      console.log(res)
+      this.counts['activeUsers'] = res?.count;
+      console.log(this.counts)
+    }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
   }
-
 }

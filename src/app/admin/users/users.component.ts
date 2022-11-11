@@ -21,7 +21,6 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(this.userService.checkSession());
     this.getUsers();
-    this.openNewUserDialog();
   }
 
   getUsers() {
@@ -39,7 +38,7 @@ export class UsersComponent implements OnInit {
     if (action === 'view') {
       this.dialog.open(GenericUserDialogComponent, { data: { item, disableInputs: true, action }, disableClose: true });
     } else if (action === 'edit') {
-      this.dialog.open(GenericUserDialogComponent, { data: { item, disableInputs: false, action, disableClose: true } }).afterClosed().subscribe(updatedRecord => {
+      this.dialog.open(GenericUserDialogComponent, { data: { item, disableInputs: false, action}, disableClose: true }).afterClosed().subscribe(updatedRecord => {
         if (updatedRecord) {
           updatedRecord['_id'] = item['_id'];
           this.updateRecord(updatedRecord)

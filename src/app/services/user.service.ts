@@ -71,4 +71,9 @@ export class UserService {
     const url = `${this.serverUrl}/${endpoint}`;
     return this.http.put<any>(url, body);
   }
+
+  getUsersCount(endpoint: string): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.get<any>(url);
+  }
 }
