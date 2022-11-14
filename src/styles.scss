@@ -88,6 +88,12 @@ app-toolbar {
   font-weight: 600 !important;
 }
 
+.dash-table-height{
+  height: 81%;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
 .swap {
   color: $primaryGreen;
   background: transparent !important;
@@ -519,4 +525,23 @@ body {
 
 .height-325px {
   max-height: 325px !important;
+}
+
+
+// Scroller 
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+/* Track */
+*::-webkit-scrollbar-track {
+  background: grey;
+}
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background:  $primaryGreen;
+}
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(116, 223, 116);
 }

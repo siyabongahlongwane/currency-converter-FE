@@ -41,15 +41,12 @@ export class CommentsComponent implements OnInit {
   openDialog(action: string, item: any) {
     if (action === 'view') {
       this.dialog.open(LatestPostsComponent, { data: { item, disableInputs: true } }).afterClosed().subscribe(data => {
-        console.log(data);
       })
     } else if (action === 'edit') {
       this.dialog.open(LatestPostsComponent, { data: { item, disableInputs: true } }).afterClosed().subscribe(data => {
-        console.log(data);
       })
     } else {
       this.dialog.open(ConfirmDialogComponent, { data: { item, disableInputs: true } }).afterClosed().subscribe(data => {
-        console.log(data);
       })
     }
   }

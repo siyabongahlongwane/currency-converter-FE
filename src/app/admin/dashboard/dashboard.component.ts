@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
-import { NewPostComponent } from '../new-post/new-post.component';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,19 +10,15 @@ import { NewPostComponent } from '../new-post/new-post.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  counts = {
-    activeUsers: 0,
-    pendingPosts: 0,
-    comments: 0,
-    inActiveUsers: 0,
-  }
+
+  
   dashboardCards = [
     {
       icon: 'group',
       name: 'Active Users',
       class: 'greenBackground',
       color: 'greenColor',
-      value: this.counts.activeUsers,
+      value: 0,
       route: '../users',
     },
     {
@@ -50,13 +46,39 @@ export class DashboardComponent implements OnInit {
       route: '../users',
     },
   ];
-  constructor(private userService: UserService, private common: CommonService) { }
+  constructor(private userService: UserService, private common: CommonService, private postService: PostService, private commentService: CommentService) { }
 
   ngOnInit(): void {
-    this.userService.getUsersCount('api/users/getUserCount').subscribe(res => {
-      console.log(res)
-      this.counts['activeUsers'] = res?.count;
-      console.log(this.counts)
+    this.getinActiveUsers();
+    this.getActiveUsers();
+    this.getUnPublishedPosts();
+    this.getunPublishedComments()
+  }
+
+  getActiveUsers() {
+    this.userService.getUsersCount('api/users/getUserCount?active=true').subscribe(res => {
+      this.dashboardCards[0]['value'] = res?.count;
     }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
   }
+
+  getinActiveUsers() {
+    this.userService.getUsersCount('api/users/getUserCount?active=false').subscribe(res => {
+      this.dashboardCards[3]['value']  = res?.count;
+    }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
+  }
+
+  
+  getUnPublishedPosts() {
+    this.postService.getPostsCount('api/posts/getPostCount?published=false').subscribe(res => {
+      this.dashboardCards[1]['value']  = res?.count;
+    }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
+  }
+
+  getunPublishedComments() {
+    this.commentService.getCommentsCount('api/comments/getCommentCount?published=false').subscribe(res => {
+      this.dashboardCards[2]['value']  = res?.count;
+    }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));
+  }
+
+
 }

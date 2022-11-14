@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     }, [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
+    active: new FormControl( true ),
     priviledges: new FormControl({
       "canAdd": true,
       "canEdit": true,

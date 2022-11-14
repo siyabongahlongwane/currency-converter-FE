@@ -1,60 +1,22 @@
-<div
-  class="spinner absolute"
-  *ngIf="spinner"
-  fxLayout="row"
-  fxLayoutAlign="center center"
-  fxFill
->
+<div class="spinner absolute" *ngIf="spinner" fxLayout="row" fxLayoutAlign="center center" fxFill>
   <mat-progress-spinner style="z-index: 99999 !important;" [mode]="mode"> </mat-progress-spinner>
 </div>
 <div fxFill fxLayout="row" fxLayoutAlign="start stretch">
   <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch">
-    <mat-toolbar
-      [ngClass.xs]="['logo-padding']"
-      fxLayoutAlign="space-between center"
-      fxLayoutAlign.xs="center center"
-    >
-      <div
-        fxFlex="15"
-        fxFlex.xs="80"
-        fxLayout="column"
-        fxLayoutAlign="start stretch"
-      >
+    <mat-toolbar [ngClass.xs]="['logo-padding']" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center">
+      <div fxFlex="15" fxFlex.xs="80" fxLayout="column" fxLayoutAlign="start stretch" class="pointer" matTooltip="Currency Rate Hub">
         <img class="full-width" src="../../assets/img/logo.png" alt="" />
       </div>
 
-      <button *ngIf="true" mat-raised-button color="primary" routerLink="/login">Sign in</button>
+      <button *ngIf="true" mat-raised-button color="primary" routerLink="/login" matTooltip="Click here to Login">Sign in</button>
     </mat-toolbar>
-    <div
-      [ngClass.xs]="['unset-height']"
-      class="home-background"
-      fxLayout="row"
-      fxLayoutAlign="center stretch"
-      fxLayoutAlign.xs="center center"
-    >
-      <div
-        fxFlex="90"
-        fxLayout="column"
-        fxLayoutAlign="center stretch"
-        fxLayoutAlign.xs="center center"
-      >
-        <div
-          fxLayout="row"
-          fxLayout.xs="column"
-          fxLayoutAlign="space-between  center"
-          fxLayoutAlign.xs="center center"
-        >
-          <div
-            fxFlex="35"
-            fxFlex.xs="90"
-            fxLayout="column"
-            fxLayoutAlign="center start"
-            fxLayoutAlign.xs="center center"
-          >
-            <h1
-              [ngClass.xs]="['big-header-xs']"
-              class="white-text primary-text big-header"
-            >
+    <div [ngClass.xs]="['unset-height']" class="home-background" fxLayout="row" fxLayoutAlign="center stretch"
+      fxLayoutAlign.xs="center center">
+      <div fxFlex="90" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutAlign.xs="center center">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between  center" fxLayoutAlign.xs="center center">
+          <div fxFlex="35" fxFlex.xs="90" fxLayout="column" fxLayoutAlign="center start"
+            fxLayoutAlign.xs="center center">
+            <h1 [ngClass.xs]="['big-header-xs']" class="white-text primary-text big-header">
               Conversion, just made easier!
             </h1>
             <h1 class="white-text  bold-text" [ngStyle.xs]="'text-align: center'">
@@ -62,219 +24,85 @@
               currency API.
             </h1>
           </div>
-          <div
-            fxFlex="55"
-            fxFlex.xs="90"
-            fxLayout="column"
-            fxLayout.xs="row"
-            fxLayoutAlign="center center"
-            [ngClass.xs]="['full-width']"
-          >
-            <mat-card
-              class="currency-card relative full-width"
-              [ngClass.xs]="['margin-bottom-1-rem']"
-
-            >
+          <div fxFlex="55" fxFlex.xs="90" fxLayout="column" fxLayout.xs="row" fxLayoutAlign="center center"
+            [ngClass.xs]="['full-width']">
+            <mat-card class="currency-card relative full-width" [ngClass.xs]="['margin-bottom-1-rem']">
               <mat-card-content class="full-width">
-                <ngx-skeleton-loader
-                  class="full-width"
-                  [theme]="{
+                <ngx-skeleton-loader class="full-width" [theme]="{
                     'background-color': '#6abf58',
                     height: '25px',
                     'border-radius': 0
-                  }"
-                  *ngIf="skeleton"
-                  count="5"
-                  appearance="line"
-                  animation="pulse"
-                >
+                  }" *ngIf="skeleton" count="5" appearance="line" animation="pulse">
                 </ngx-skeleton-loader>
-                <form
-                  class="full-width"
-                  *ngIf="!skeleton"
-                  #conversionForm="ngForm"
-                >
+                <form class="full-width" *ngIf="!skeleton" #conversionForm="ngForm">
                   <h1 align="center" class="primary-text bold-text-600">
                     Start converting!
                   </h1>
-                  <h4 *ngIf="false" class="white-text">Get full access to our API <a target="_blank" href="https://rapidapi.com/mtimandze/api/currency-converter-by-currency-rate-hub/pricing" class="red-text pointer">here</a>.</h4>
-                  <div
-                    class="full-width"
-                    fxLayout="row"
-                    fxLayout.xs="column"
-                    fxLayoutAlign="space-between center"
-                    fxLayoutAlign.xs="center center"
-                  >
-                    <div
-                      fxFlex="28"
-                      class="full-width"
-                      fxLayoutGap="1rem"
-                      fxLayout="column"
-                      fxLayoutAlign="center start"
-                    >
-                      <div
-                        fxFlex="100"
-                        fxLayout="column"
-                        fxLayout.xs="row"
-                        fxLayoutAlign="center start"
-                      >
-                        <label fxHide.xs="true" class="bold-text white-text"
-                          >Amount To Convert</label
-                        >
+                  <h4 *ngIf="false" class="white-text">Get full access to our API <a target="_blank"
+                      href="https://rapidapi.com/mtimandze/api/currency-converter-by-currency-rate-hub/pricing"
+                      class="red-text pointer">here</a>.</h4>
+                  <div class="full-width" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center"
+                    fxLayoutAlign.xs="center center">
+                    <div fxFlex="28" class="full-width" fxLayoutGap="1rem" fxLayout="column"
+                      fxLayoutAlign="center start">
+                      <div fxFlex="100" fxLayout="column" fxLayout.xs="row" fxLayoutAlign="center start">
+                        <label fxHide.xs="true" class="bold-text white-text">Amount To Convert</label>
                       </div>
-                      <div
-                        fxFlex="100"
-                        fxLayoutGap="1rem"
-                        fxLayout="column"
-                        fxLayout.xs="row"
-                        fxLayoutAlign="center start"
-                        class="full-width"
-                      >
+                      <div fxFlex="100" fxLayoutGap="1rem" fxLayout="column" fxLayout.xs="row"
+                        fxLayoutAlign="center start" class="full-width">
                         <mat-form-field class="full-width" appearance="outline">
                           <mat-label class="bold-text">Amount</mat-label>
-                          <input
-                            required
-                            [(ngModel)]="conversion.amount"
-                            type="number"
-                            name="amount"
-                            matInput
-                            placeholder="Amount"
-                          />
+                          <input required [(ngModel)]="conversion.amount" type="number" name="amount" matInput
+                            placeholder="Amount" />
                         </mat-form-field>
                       </div>
                     </div>
-                    <div
-                      fxFlex="28"
-                      fxFlex.xs="100"
-                      fxLayoutGap="1rem"
-                      fxLayout="column"
-                      fxLayout.xs="column"
-                      fxLayoutAlign="center start"
-                      class="full-width"
-                    >
-                      <div
-                        fxFlex="28"
-                        fxFlex.xs="100"
-                        fxLayout="column"
-                        fxLayout.xs="column"
-                        fxLayoutAlign="center start"
-                        class="full-width"
-                      >
-                        <label fxHide.xs="true" class="bold-text white-text"
-                          >Convert From</label
-                        >
+                    <div fxFlex="28" fxFlex.xs="100" fxLayoutGap="1rem" fxLayout="column" fxLayout.xs="column"
+                      fxLayoutAlign="center start" class="full-width">
+                      <div fxFlex="28" fxFlex.xs="100" fxLayout="column" fxLayout.xs="column"
+                        fxLayoutAlign="center start" class="full-width">
+                        <label fxHide.xs="true" class="bold-text white-text">Convert From</label>
                       </div>
-                      <div
-                        fxFlex="28"
-                        fxFlex.xs="100"
-                        fxLayoutGap="1rem"
-                        fxLayout="column"
-                        fxLayout.xs="column"
-                        fxLayoutAlign="center start"
-                        class="full-width"
-                      >
+                      <div fxFlex="28" fxFlex.xs="100" fxLayoutGap="1rem" fxLayout="column" fxLayout.xs="column"
+                        fxLayoutAlign="center start" class="full-width">
                         <mat-form-field class="full-width" appearance="outline">
                           <mat-label class="bold-text">Convert From</mat-label>
-                          <input
-                            required
-                            type="text"
-                            placeholder="Convert From"
-                            aria-label="Country"
-                            matInput
-                            matAutocompletePosition="below"
-                            (blur)="checkIfCurrencyOneIsValid($event)"
-                            [ngModel]="conversion.firstCurrencyName"
-                            name="firstCurrencyName"
-                            (ngModelChange)="
+                          <input required type="text" placeholder="Convert From" aria-label="Country" matInput
+                            matAutocompletePosition="below" (blur)="checkIfCurrencyOneIsValid($event)"
+                            [ngModel]="conversion.firstCurrencyName" name="firstCurrencyName" (ngModelChange)="
                               getCurrency($event, 'firstCurrencyName')
-                            "
-                            [matAutocomplete]="autoOne"
-                          />
-                          <mat-autocomplete
-                            panelWidth="auto"
-                            #autoOne="matAutocomplete"
-                          >
-                            <mat-option
-                              *ngFor="let country of filteredValues"
-                              [value]="country.currencyName"
-                            >
+                            " [matAutocomplete]="autoOne" />
+                          <mat-autocomplete panelWidth="auto" #autoOne="matAutocomplete">
+                            <mat-option *ngFor="let country of filteredValues" [value]="country.currencyName">
                               {{ country.currencyName }}
                             </mat-option>
                           </mat-autocomplete>
                         </mat-form-field>
                       </div>
                     </div>
-                    <div
-                      fxFlex="4"
-                      fxLayout="column"
-                      fxLayout.xs="row"
-                      fxLayoutAlign="center center"
-                      fxLayoutAlign.xs="start center"
-                    >
-                      <mat-icon
-                        [ngClass.xs]="['swap-xs']"
-                        [ngClass.gt-xs]="['margin-top-1-rem']"
-                        class="pointer swap full-width"
-                        (click)="swapCurrencies()"
-                        >swap_horiz</mat-icon
-                      >
+                    <div fxFlex="4" fxLayout="column" fxLayout.xs="row" fxLayoutAlign="center center"
+                      fxLayoutAlign.xs="start center">
+                      <mat-icon [ngClass.xs]="['swap-xs']" [ngClass.gt-xs]="['margin-top-1-rem']"
+                        class="pointer swap full-width" (click)="swapCurrencies()">swap_horiz</mat-icon>
                     </div>
 
-                    <div
-                      fxFlex="28"
-                      fxFlex.xs="100"
-                      fxLayoutGap="1rem"
-                      fxLayout="column"
-                      fxLayout.xs="column"
-                      fxLayoutAlign="center start"
-                      class="full-width"
-                    >
-                      <div
-                        fxFlex="28"
-                        fxFlex.xs="100"
-                        fxLayout="column"
-                        fxLayout.xs="column"
-                        fxLayoutAlign="center start"
-                        class="full-width"
-                      >
-                        <label fxHide.xs="true" class="bold-text white-text"
-                          >Convert To</label
-                        >
+                    <div fxFlex="28" fxFlex.xs="100" fxLayoutGap="1rem" fxLayout="column" fxLayout.xs="column"
+                      fxLayoutAlign="center start" class="full-width">
+                      <div fxFlex="28" fxFlex.xs="100" fxLayout="column" fxLayout.xs="column"
+                        fxLayoutAlign="center start" class="full-width">
+                        <label fxHide.xs="true" class="bold-text white-text">Convert To</label>
                       </div>
-                      <div
-                        fxFlex="28"
-                        fxFlex.xs="100"
-                        fxLayoutGap="1rem"
-                        fxLayout="column"
-                        fxLayout.xs="column"
-                        fxLayoutAlign="center start"
-                        class="full-width"
-                      >
+                      <div fxFlex="28" fxFlex.xs="100" fxLayoutGap="1rem" fxLayout="column" fxLayout.xs="column"
+                        fxLayoutAlign="center start" class="full-width">
                         <mat-form-field class="full-width" appearance="outline">
                           <mat-label class="bold-text">Convert To</mat-label>
-                          <input
-                            required
-                            type="text"
-                            placeholder="Convert To"
-                            aria-label="Country"
-                            matInput
-                            matAutocompletePosition="below"
-                            (blur)="checkIfCurrencyTwoIsValid($event)"
-                            [ngModel]="conversion.secondCurrencyName"
-                            name="secondCurrencyName"
-                            (ngModelChange)="
+                          <input required type="text" placeholder="Convert To" aria-label="Country" matInput
+                            matAutocompletePosition="below" (blur)="checkIfCurrencyTwoIsValid($event)"
+                            [ngModel]="conversion.secondCurrencyName" name="secondCurrencyName" (ngModelChange)="
                               getCurrency($event, 'secondCurrencyName')
-                            "
-                            [matAutocomplete]="auto"
-                          />
-                          <mat-autocomplete
-                            panelWidth="auto"
-                            #auto="matAutocomplete"
-                          >
-                            <mat-option
-                              *ngFor="let countryTwo of filteredValuesTwo"
-                              [value]="countryTwo.currencyName"
-                            >
+                            " [matAutocomplete]="auto" />
+                          <mat-autocomplete panelWidth="auto" #auto="matAutocomplete">
+                            <mat-option *ngFor="let countryTwo of filteredValuesTwo" [value]="countryTwo.currencyName">
                               {{ countryTwo.currencyName }}
                             </mat-option>
                           </mat-autocomplete>
@@ -283,29 +111,17 @@
                     </div>
                   </div>
                 </form>
-                <small
-                  class="error bold-text"
-                  *ngIf="submitted && conversionForm?.invalid"
-                  >Please insert valid values for conversion!</small
-                >
+                <small class="error bold-text" *ngIf="submitted && conversionForm?.invalid">Please insert valid values
+                  for conversion!</small>
                 <div fxLayout="row" fxLayoutAlign="end center">
-                  <button
-                    [ngClass]="{
+                  <button [ngClass]="{
                       'margin-top-1-rem': submitted && !skeleton,
                       'margin-bottom-1-rem': submitted && !skeleton
-                    }"
-                    (click)="getConversionRate()"
-                    mat-raised-button
-                    class="primary-button white-text all-buttons"
-                  >
+                    }" (click)="getConversionRate()" mat-raised-button class="primary-button white-text all-buttons">
                     Convert
                   </button>
                 </div>
-                <div
-                  *ngIf="showConversion && !skeleton"
-                  fxLayout="column"
-                  fxLayoutAlign="center start"
-                >
+                <div *ngIf="showConversion && !skeleton" fxLayout="column" fxLayoutAlign="center start">
                   <div class="primary-text" fxLayout="column" fxLayoutAlign="center start">
                     <p>
                       {{ conversion.amount }}
@@ -337,11 +153,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="padding-half-rem full-width footer"
-      fxLayout="row wrap"
-      fxLayoutAlign="space-around center"
-    >
+    <div class="padding-half-rem full-width footer" fxLayout="row wrap" fxLayoutAlign="space-around center">
       <!-- <div
         class="pointer"
         fxFlex="15"
@@ -354,40 +166,22 @@
         </p>
       </div> -->
 
-      <div
-        (click)="openTermsDialog()"
-        class="pointer"
-        fxFlex="15"
-        fxFlex.xs="37"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div (click)="openTermsDialog()" class="pointer" fxFlex="15" fxFlex.xs="37" fxLayout="column"
+        fxLayoutAlign="center center">
         <p class="remove-default-margin bold-text white-text footer-links">
           Terms & Conditions
         </p>
       </div>
 
-      <div
-        (click)="openPrivacyDialog()"
-        class="pointer"
-        fxFlex="15"
-        fxFlex.xs="35"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div (click)="openPrivacyDialog()" class="pointer" fxFlex="15" fxFlex.xs="35" fxLayout="column"
+        fxLayoutAlign="center center">
         <p class="remove-default-margin bold-text white-text footer-links">
           Privacy Policy
         </p>
       </div>
 
-      <div
-        (click)="openContactDialog()"
-        class="pointer"
-        fxFlex="15"
-        fxFlex.xs="25"
-        fxLayout="column"
-        fxLayoutAlign="center center"
-      >
+      <div (click)="openContactDialog()" class="pointer" fxFlex="15" fxFlex.xs="25" fxLayout="column"
+        fxLayoutAlign="center center">
         <p class="remove-default-margin bold-text white-text footer-links">
           Contact Us
         </p>

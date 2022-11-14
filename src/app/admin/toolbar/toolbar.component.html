@@ -1,21 +1,31 @@
 <div fxFill fxLayout="row" fxLayoutAlign="start stretch">
   <div fxFlex="100" fxLayout="column" fxLayoutAlign="start stretch">
-    <mat-toolbar
-      [ngClass.xs]="['logo-padding']"
-      fxLayoutAlign="space-between center"
-      fxLayoutAlign.xs="center center"
-    >
-      <div
-        fxFlex="15"
-        fxFlex.xs="80"
-        fxLayout="column"
-        fxLayoutAlign="start stretch"
-      >
-        <img class="full-width" src="../../assets/img/logo.png" alt="" />
+    <mat-toolbar [ngClass.xs]="['logo-padding']" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center center">
+      <div fxFlex="15" fxFlex.xs="80" fxLayout="column" fxLayoutAlign="start stretch" matTooltip="Currency Rate Hub">
+        <img class="full-width pointer" src="../../assets/img/logo.png" alt="" (click)="reLoadPage()">
       </div>
       <div fxLayout="row" fxLayoutGap="1em" fxLayoutAlign="start center">
-        <small>Hi, <span class="username bold-text">{{ user?.firstName}}</span> </small>
-        <mat-icon (click)="logout()" matTooltip="Logout" class="pointer bold-text">power_settings_new</mat-icon>
+        <small [matMenuTriggerFor]="menu" class="pointer">Hi, <span class="username bold-text">{{ user?.firstName}}
+            <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button> -->
+          </span> </small>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voice mail</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+          </button>
+        </mat-menu>
+        <mat-icon (click)="logout()" matTooltip="Logout" class="pointer bold-text" matTooltip="Logout">power_settings_new
+        </mat-icon>
       </div>
     </mat-toolbar>
   </div>

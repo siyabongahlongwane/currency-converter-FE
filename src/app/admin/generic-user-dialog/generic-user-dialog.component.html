@@ -14,9 +14,13 @@
         <div fxLayout="row" fxLayoutAlign="center center" class="fullwidth">
           <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
             <form [formGroup]="register" class="fullwidth">
-              <div fxLayout="row" fxLayoutAlign="start stretch" class="margin-top-1-rem"></div>
+              <div fxLayout="row" fxLayoutAlign="end end" class="margin-top-1-rem">
+                <div fxLayout="column" fxFlex="30" fxLayoutAlign="start end" class="marginBottom1em">
+                  <mat-slide-toggle formControlName="active">Active</mat-slide-toggle>
+                </div>
+              </div>
 
-              <div fxLayout="row" fxLayoutAlign="space-between stretch" class="marginBottom1em">
+              <div fxLayout="row" fxLayoutAlign="space-between stretch">
                 <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49">
                   <mat-form-field appearance="outline">
                     <mat-label>First Name</mat-label>
@@ -44,8 +48,8 @@
                   </mat-form-field>
                 </div>
               </div>
-              <div fxLayout="row" fxLayoutAlign="space-between stretch" class="marginBottom1em"></div>
-              <div fxLayout="row" fxLayoutAlign="space-between stretch" class="marginBottom1em">
+              <div fxLayout="row" fxLayoutAlign="space-between stretch"></div>
+              <div fxLayout="row" fxLayoutAlign="space-between stretch">
                 <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="49">
                   <mat-form-field appearance="outline">
                     <mat-label>Username</mat-label>
@@ -123,7 +127,7 @@
         </div>
         <div class="margin-top-1-rem" fxLayout="row" fxLayoutAlign="start stretch">
           <button *ngIf="!data?.action" mat-raised-button mat-dialog-close class="primary-button  all-buttons"
-          [mat-dialog-close]="register.value" [disabled]="register.invalid">
+            [mat-dialog-close]="register.value" [disabled]="register.invalid">
             Add User
           </button>
           <button *ngIf="data?.action =='edit'" mat-raised-button [mat-dialog-close]="register"

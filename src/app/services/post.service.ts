@@ -36,4 +36,9 @@ export class PostService {
     return this.http.post<any>(url, body);
   }
 
+  getPostsCount(endpoint: string): Observable<any> {
+    const url = `${this.serverUrl}/${endpoint}`;
+    return this.http.get<any>(url);
+  }
+
 }

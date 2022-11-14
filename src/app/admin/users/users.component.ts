@@ -13,7 +13,7 @@ import { GenericUserDialogComponent } from '../generic-user-dialog/generic-user-
 })
 export class UsersComponent implements OnInit {
   img: string = '../../assets/img/cookie.png';
-  displayedColumns: string[] = ['firstName', 'lastName', 'username', 'role', 'action'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'username', 'role', 'active', 'action'];
   user: any = {};
   dataSource = new MatTableDataSource([]);
   constructor(private router: Router, private userService: UserService, private common: CommonService, private dialog: MatDialog) { }
@@ -40,8 +40,8 @@ export class UsersComponent implements OnInit {
     } else if (action === 'edit') {
       this.dialog.open(GenericUserDialogComponent, { data: { item, disableInputs: false, action}, disableClose: true }).afterClosed().subscribe(updatedRecord => {
         if (updatedRecord) {
-          updatedRecord['_id'] = item['_id'];
-          this.updateRecord(updatedRecord)
+          updatedRecord.value['_id'] = item['_id'];
+          this.updateRecord(updatedRecord.value)
         }
       })
     } else {
@@ -61,7 +61,7 @@ export class UsersComponent implements OnInit {
   }
 
   updateRecord(body: any) {
-    this.userService.updateUser(`api/users/updateUser/${body['_id']}`, body).subscribe(res => {
+    this.userService.updateUser(`api/users/editUser/${body['_id']}`, body).subscribe(res => {
       this.common.openSnackbar(res?.msg);
       this.getUsers();
     }, onFailure => this.common.openSnackbar(onFailure?.error?.msg || 'Internal Server Error'));

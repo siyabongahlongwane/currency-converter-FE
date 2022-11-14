@@ -25,4 +25,9 @@ export class ToolbarComponent implements OnInit {
     this.userService.destroySession();
     this.router.navigate(['login']);
   }
+
+  reLoadPage() {
+    window.location.reload();
+  }
+
 }

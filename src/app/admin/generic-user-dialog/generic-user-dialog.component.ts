@@ -68,6 +68,7 @@ export class GenericUserDialogComponent implements OnInit {
       role: ['', Validators['required']],
       username: ['', Validators['required']],
       password: ['', Validators['required']],
+      active: [true],
       privileges: this.fb.group({
         canAdd: [false, Validators['required']],
         canEdit: [false, Validators['required']],

@@ -33,6 +33,7 @@ import { GenericPostDialogComponent } from './admin/generic-post-dialog/generic-
 import { GenericCommentsDialogComponent } from './admin/generic-comments-dialog/generic-comments-dialog.component';
 import { GenericUserDialogComponent } from './admin/generic-user-dialog/generic-user-dialog.component';
 import { BlogComponent } from './blog/blog.component';
+import { MatMenuModule } from '@angular/material/menu'; 
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { BlogComponent } from './blog/blog.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    EditorModule
+    EditorModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

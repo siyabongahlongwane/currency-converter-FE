@@ -90,7 +90,6 @@ export class HomeClientComponent implements OnInit {
         }
       },
       (msg) => {
-        console.log(msg);
         this.showConversion;
         this.common.openSnackbar(msg.error || 'Error converting currencies!');
         this.skeleton = false;
